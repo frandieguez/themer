@@ -1,0 +1,22 @@
+rofi.font:                Inconsolata for Powerline 20
+rofi.color-enabled:       true
+rofi.color-normal:        #00000000, #b8babe, #00000000, #446980, #eceff4
+rofi.color-urgent:        #62889e, #e0eff6, #00000000, #446980, #e0eff6
+rofi.color-active:        #00000000, #23bae2, #00000000, #446980, #e0eff6
+rofi.color-window:        #ee1a1b22, #ee1a1b22, #00000000
+rofi.bw:                  2
+rofi.padding:             50
+rofi.terminal:            termite
+rofi.ssh-command:         {terminal} -e "{ssh-client} {host}"
+rofi.separator-style:     none
+rofi.sidebar-mode:        true
+rofi.line-margin:         10
+rofi.fullscreen:          true
+rofi.fake-transparency:   true
+rofi.kb-remove-char-back: BackSpace
+rofi.kb-remove-to-eol:    Control+BackSpace
+rofi.kb-accept-entry:     Return
+rofi.kb-mode-next:        Shift+Right,Control+l,Control+Tab
+rofi.kb-mode-previous:    Shift+Left,Control+h,Control+Shift+Tab
+rofi.kb-row-up:           Up,Control+k,Shift+Tab
+rofi.kb-row-down:         Down,Control+j,Tab

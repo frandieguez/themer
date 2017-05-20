@@ -1,0 +1,83 @@
+[options]
+scroll_on_output = false
+scroll_on_keystroke = true
+audible_bell = false
+mouse_autohide = true
+allow_bold = true
+dynamic_title = true
+urgent_on_bell = true
+clickable_url = true
+font = Hack Regular 12
+scrollback_lines = 10000
+search_wrap = true
+icon_name = terminal
+#geometry = 640x480
+
+# "system", "on" or "off"
+cursor_blink = on
+
+# "block", "underline" or "ibeam"
+cursor_shape = block
+
+# set size hints for the window
+size_hints = true
+
+# Hide links that are no longer valid in url select overlay mode
+filter_unmatched_urls = true
+
+# emit escape sequences for extra modified keys
+#modify_other_keys = true
+
+[hints]
+font = Hack Bold 10
+foreground = #21232a
+background = #c7c952
+active_foreground = #e68080
+active_background = #3f3f3f
+padding = 2
+border = #81a1c1
+border_width = 2
+roundness = 2.0
+
+# vim: ft=dosini cms=#%s
+
+[colors]
+
+# special
+foreground      = #eceff4
+foreground_bold = #eceff4
+cursor          = #23bae2
+background      = #1a1b22
+
+# black
+color0  = #21232a
+color8  = #23323e
+
+# red
+color1  = #af4444
+color9  = #e15151
+
+# green
+color2  = #468d4f
+color10 = #58b164
+
+# yellow
+color3  = #737012
+color11 = #e2db23
+
+# blue
+color4  = #185880
+color12 = #446980
+
+# magenta
+color5  = #8e217f
+color13 = #ee8ae1
+
+# cyan
+color6  = #136479
+color14 = #23bae2
+
+# white
+color7  = #b8babe
+color15 = #eceff4
+color16 = #1a1b22

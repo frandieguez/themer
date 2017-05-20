@@ -1,0 +1,21 @@
+color normal color12 color16
+color status color12 color16
+color index color12 color16 '.*'
+color indicator color14 color0
+color index_number color12 color16
+color index_size color12 color16
+color index_subject color7 color16 '.*'
+color index_author color4 color16 '.*'
+color index_date color12 color16
+color header color4 color16 'From: .*'
+color header color12 color16 'Date: .*'
+color header color14 color16 'Subject: .*'
+color header color6 color16 'To: .*'
+color message color12 color16
+color body color7 color16 '.*'
+color bold color15 color16
+color signature color13 color16
+color attachment color7 color16
+color sidebar_new color11 color16
+color sidebar_divider color12 color16
+color sidebar_indicator color14 color16
