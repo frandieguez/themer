@@ -186,14 +186,14 @@ function updateVim() {
 
 # Changes the current wallpaper
 function updateWallpaper() {
-    if [[ ! `ls $DIR/$1 | grep ".*\.\(png\|jpg\)"` ]]; then
+    if [[ ! -d $DIR/$1/wallpaper  ]] || [[ ! `ls $DIR/$1/wallpaper | grep ".*\.\(png\|jpg\)"` ]]; then
         return
     fi
 
     echo -en "  Changing wallpaper..."
 
-    WALLPAPER=`ls $DIR/$1 | grep ".*\.\(png\|jpg\)"`
-    feh --bg-scale $DIR/$1/$WALLPAPER &
+    WALLPAPER=`ls $DIR/$1/wallpaper | grep ".*\.\(png\|jpg\)"`
+    feh --bg-scale $DIR/$1/wallpaper/$WALLPAPER &
 
     echo -e "\E[37;32mDONE\033[0m"
 }
