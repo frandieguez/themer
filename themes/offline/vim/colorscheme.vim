@@ -1,4 +1,7 @@
 " Vim color file
+let g:indentLine_setColors = 1
+let g:indentLine_color_term = 8
+
 set background=dark
 highlight clear
 
