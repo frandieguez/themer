@@ -10,10 +10,10 @@ function help() {
     fi
 
 cat << EOF
-Usage: themer.sh [OPTION] THEME
+Usage: themer [OPTION] THEME
+Changes the wallpaper and current theme for bspwm, polybar and more.
 
-Change the current wallpaper and themes for polybar, rofi, termite, tmux and vim
-
+Options:
   -h, --help    Display this help and exit
   -l, --list    Display the list of available themes
 EOF
@@ -74,6 +74,7 @@ function main() {
     updateRofi      $THEME
     updateTermite   $THEME
     updateTmux      $THEME
+    updateVim       $THEME
     updateWallpaper $THEME
 }
 
@@ -175,7 +176,7 @@ function updateVim() {
     fi
 
     if [[ -f $DIR/themes/$1/vim/lightline.vim ]]; then
-        echo -en "Changing vim lightline theme..."
+        echo -en "  Changing vim lightline theme..."
 
         cp $DIR/themes/$1/vim/lightline.vim $HOME/.vim/autoload/lightline/colorscheme/$1.vim
         sed -i -e "s/'colorscheme': '.*',/'colorscheme': '$1',/g" $HOME/.vimrc
