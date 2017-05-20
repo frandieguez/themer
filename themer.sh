@@ -25,7 +25,7 @@ EOF
 function list() {
     echo "Available themes:"
 
-    ls -la $DIR | \
+    ls -la $DIR/themes | \
         grep "^d" | \
         sed -e "s/\s\+/ /g" | \
         cut -d ' ' -f 9 | \
@@ -58,7 +58,7 @@ function main() {
     fi
 
     # No theme to apply
-    if [[ ! $THEME ]] || [[ ! -d $DIR/$THEME ]]; then
+    if [[ ! $THEME ]] || [[ ! -d $DIR/themes/$THEME ]]; then
         echo -e "\E[31;5merror: unknown theme\033[0m"
         help
         exit -1
@@ -78,33 +78,33 @@ function main() {
 }
 
 function updateBspwm() {
-    if [[ ! `type bspwm` ]] || [[ ! -f $DIR/$1/bspwm/config ]]; then
+    if [[ ! `type bspwm` ]] || [[ ! -f $DIR/themes/$1/bspwm/config ]]; then
         return
     fi
 
     echo -en "  Changing bspwm theme..."
-    cp $DIR/$1/bspwm/config $HOME/.config/bspwm/theme
-    source $DIR/$1/bspwm/config
+    cp $DIR/themes/$1/bspwm/config $HOME/.config/bspwm/theme
+    source $DIR/themes/$1/bspwm/config
     echo -e "\E[37;32mDONE\033[0m"
 }
 
 # Changes mutt theme
 function updateMutt() {
-    if [[ ! `type mutt` ]] || [[ ! -f $DIR/$1/mutt/config ]]; then
+    if [[ ! `type mutt` ]] || [[ ! -f $DIR/themes/$1/mutt/config ]]; then
         return
     fi
 
     echo -en "  Changing mutt theme..."
 
     sed $HOME/.muttrc -i -e "/^color.*$/d"
-    cat $DIR/$1/mutt/config >> $HOME/.muttrc
+    cat $DIR/themes/$1/mutt/config >> $HOME/.muttrc
 
     echo -e "\E[37;32mDONE\033[0m"
 }
 
 # Changes the polybar theme
 function updatePolybar() {
-    if [[ ! `type polybar` ]] || [[ ! -f $DIR/$1/polybar/config ]]; then
+    if [[ ! `type polybar` ]] || [[ ! -f $DIR/themes/$1/polybar/config ]]; then
         return
     fi
 
@@ -112,7 +112,7 @@ function updatePolybar() {
 
     echo -en "  Changing polybar theme..."
 
-    cp $DIR/$1/polybar/config $HOME/.config/polybar/config
+    cp $DIR/themes/$1/polybar/config $HOME/.config/polybar/config
 
     killall polybar > /dev/null 2>&1
     polybar $BAR > /tmp/polybar.log 2>&1 &
@@ -122,35 +122,35 @@ function updatePolybar() {
 
 # Changes the rofi theme
 function updateRofi() {
-    if [[ ! `type rofi` ]] || [[ ! -f $DIR/$1/rofi/config ]]; then
+    if [[ ! `type rofi` ]] || [[ ! -f $DIR/themes/$1/rofi/config ]]; then
         return
     fi
 
     echo -en "  Changing rofi theme..."
-    cp $DIR/$1/rofi/config $HOME/.config/rofi/config
+    cp $DIR/themes/$1/rofi/config $HOME/.config/rofi/config
     echo -e "\E[37;32mDONE\033[0m"
 }
 
 # Changes the termite theme
 function updateTermite() {
-    if [[ ! `type termite` ]] || [[ ! -f $DIR/$1/termite/config ]]; then
+    if [[ ! `type termite` ]] || [[ ! -f $DIR/themes/$1/termite/config ]]; then
         return
     fi
 
     echo -en "  Changing termite theme..."
-    cp $DIR/$1/termite/config $HOME/.config/termite/config
+    cp $DIR/themes/$1/termite/config $HOME/.config/termite/config
     xdotool key 'ctrl+shift+r'
     echo -e "\E[37;32mDONE\033[0m"
 }
 
 # Changes the tmux theme
 function updateTmux() {
-    if [[ ! `type tmux` ]] || [[ ! -f $DIR/$THEME/tmux/theme.conf ]]; then
+    if [[ ! `type tmux` ]] || [[ ! -f $DIR/themes/$THEME/tmux/theme.conf ]]; then
         return
     fi
 
     echo -en "  Changing tmux theme..."
-    cp $DIR/$THEME/tmux/theme.conf  $HOME/.tmux/theme.conf
+    cp $DIR/themes/$THEME/tmux/theme.conf  $HOME/.tmux/theme.conf
 
     if [[ `ps aux | grep tmux | tail -n +2` ]]; then
         tmux source-file $HOME/.tmux/theme.conf
@@ -165,19 +165,19 @@ function updateVim() {
         return
     fi
 
-    if [[ -f $DIR/$1/vim/colorscheme.vim ]]; then
+    if [[ -f $DIR/themes/$1/vim/colorscheme.vim ]]; then
         echo -en "  Changing vim theme..."
 
-        cp $DIR/$1/vim/colorscheme.vim $HOME/.vim/colors/$1.vim
+        cp $DIR/themes/$1/vim/colorscheme.vim $HOME/.vim/colors/$1.vim
         sed -i -e "s/^colorscheme\s\+.*$/colorscheme $1/g" $HOME/.vimrc
 
         echo -e "\E[37;32mDONE\033[0m"
     fi
 
-    if [[ -f $DIR/$1/vim/lightline.vim ]]; then
+    if [[ -f $DIR/themes/$1/vim/lightline.vim ]]; then
         echo -en "Changing vim lightline theme..."
 
-        cp $DIR/$1/vim/lightline.vim $HOME/.vim/autoload/lightline/colorscheme/$1.vim
+        cp $DIR/themes/$1/vim/lightline.vim $HOME/.vim/autoload/lightline/colorscheme/$1.vim
         sed -i -e "s/'colorscheme': '.*',/'colorscheme': '$1',/g" $HOME/.vimrc
 
         echo -e "\E[37;32mDONE\033[0m"
@@ -186,14 +186,14 @@ function updateVim() {
 
 # Changes the current wallpaper
 function updateWallpaper() {
-    if [[ ! -d $DIR/$1/wallpaper  ]] || [[ ! `ls $DIR/$1/wallpaper | grep ".*\.\(png\|jpg\)"` ]]; then
+    if [[ ! -d $DIR/themes/$1/wallpaper  ]] || [[ ! `ls $DIR/themes/$1/wallpaper | grep ".*\.\(png\|jpg\)"` ]]; then
         return
     fi
 
     echo -en "  Changing wallpaper..."
 
-    WALLPAPER=`ls $DIR/$1/wallpaper | grep ".*\.\(png\|jpg\)"`
-    feh --bg-scale $DIR/$1/wallpaper/$WALLPAPER &
+    WALLPAPER=`ls $DIR/themes/$1/wallpaper | grep ".*\.\(png\|jpg\)"`
+    feh --bg-scale $DIR/themes/$1/wallpaper/$WALLPAPER &
 
     echo -e "\E[37;32mDONE\033[0m"
 }
