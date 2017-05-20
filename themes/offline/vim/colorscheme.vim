@@ -11,10 +11,6 @@ endif
 
 let g:colors_name = "offline"
 
-" special
-"foreground      = "eceff4
-"foreground_bold = "eceff4
-"cursor          = "eceff4
 let s:background = [ 16, "1a1b22" ]
 
 " black
@@ -93,8 +89,8 @@ call <SID>set_hi("StatusLine", s:color15, s:color0, "bold")
 call <SID>set_hi("StatusLineNC", s:color15, s:color0, "NONE")
 call <SID>set_hi("Pmenu", s:none, s:color0, "NONE")
 call <SID>set_hi("PmenuSel", s:none, s:color12, "NONE")
-call <SID>set_hi("IncSearch", s:color15, s:color14, "NONE")
-call <SID>set_hi("Search", s:color15, s:color14, "NONE")
+call <SID>set_hi("IncSearch", s:color15, s:color12, "NONE")
+call <SID>set_hi("Search", s:color15, s:color12, "NONE")
 call <SID>set_hi("Directory", s:color4, s:none, "NONE")
 call <SID>set_hi("Folded", s:color12, s:none, "NONE")
 call <SID>set_hi("Define", s:color13, s:none, "NONE")
