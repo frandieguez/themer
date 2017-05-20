@@ -37,7 +37,7 @@ function list() {
 
 # Changes the current theme
 function main() {
-    LAST=`cat $DIR/last.theme`
+    LAST=`cat $DIR/last`
 
     while [[ $# -gt 0 ]]; do
         case "$1" in
@@ -64,7 +64,7 @@ function main() {
         exit -1
     fi
 
-    echo $THEME > $DIR/last.theme
+    echo $THEME > $DIR/last
 
     echo "Applying $THEME theme..."
 
