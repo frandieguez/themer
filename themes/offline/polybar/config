@@ -57,7 +57,7 @@ modules-center =
 modules-right = xbacklight xkeyboard memory cpu temperature wlan eth date volume battery
 
 tray-position = right
-tray-margin = 5
+tray-padding = 5
 tray-transparent = false
 tray-background = ${colors.background}
 
