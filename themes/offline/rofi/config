@@ -1,4 +1,4 @@
-rofi.font:                Inconsolata for Powerline 20
+rofi.font:                Hack Regular 20
 rofi.color-enabled:       true
 rofi.color-normal:        #00000000, #b8babe, #00000000, #446980, #eceff4
 rofi.color-urgent:        #62889e, #e0eff6, #00000000, #446980, #e0eff6
