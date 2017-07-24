@@ -199,22 +199,35 @@ label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/bspwm]
 type = internal/bspwm
+pin-workspaces = false
 
-label-focused = %index%
+label-normal = %icon%
+
+label-focused = %icon%
 label-focused-foreground = ${colors.cyan}
 label-focused-padding = 2
 
-label-occupied = %index%
+label-occupied = %icon%
 label-occupied-foreground = ${colors.blue}
 label-occupied-padding = 2
 
-label-urgent = %index%!
-label-urgent-background = ${colors.alert}
+label-urgent = %icon%
+label-urgent-foreground = ${colors.alert}
 label-urgent-padding = 2
 
-label-empty = %index%
+label-empty = %icon%
 label-empty-foreground = ${colors.blue}
 label-empty-padding = 2
+
+label-monitor = %name%
+
+ws-icon-0 = code;
+ws-icon-1 = ssh;
+ws-icon-2 = email;
+ws-icon-3 = im;
+ws-icon-4 = web;
+ws-icon-5 = music;
+ws-icon-default =
 
 [module/i3]
 type = internal/i3
@@ -491,7 +504,7 @@ screenchange-reload = true
 ;compositing-border = over
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
+margin-top = 0
+;margin-bottom = 0
 
 ; vim:ft=dosini
