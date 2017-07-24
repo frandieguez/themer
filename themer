@@ -68,7 +68,6 @@ function main() {
 
     echo "Applying $THEME theme..."
 
-    updateBspwm     $THEME
     updateMutt      $THEME
     updatePolybar   $THEME
     updateRofi      $THEME
@@ -76,6 +75,8 @@ function main() {
     updateTmux      $THEME
     updateVim       $THEME
     updateWallpaper $THEME
+
+    updateBspwm     $THEME
 }
 
 function updateBspwm() {
@@ -87,6 +88,15 @@ function updateBspwm() {
     cp $DIR/themes/$1/bspwm/config $HOME/.config/bspwm/theme
     source $DIR/themes/$1/bspwm/config
     echo -e "\E[37;32mDONE\033[0m"
+
+    if [[ `type bspwm` ]]; then
+        for m in `mons | grep enabled | sed -e "s/\s\+/ /g" | cut -d ' ' -f2`; do
+            if [[ $m != $(cat /tmp/monitor) ]]; then
+                sleep 1
+                bspc config -m $m top_padding 0
+            fi
+        done
+    fi
 }
 
 # Changes mutt theme
@@ -170,7 +180,7 @@ function updateVim() {
         echo -en "  Changing vim theme..."
 
         cp $DIR/themes/$1/vim/colorscheme.vim $HOME/.vim/colors/$1.vim
-        sed -i -e "s/^colorscheme\s\+.*$/colorscheme $1/g" $HOME/.vimrc
+        sed -i -e "s/^colorscheme\s\+.*$/colorscheme $1/g" $(readlink -f $HOME/.vimrc)
 
         echo -e "\E[37;32mDONE\033[0m"
     fi
@@ -179,7 +189,7 @@ function updateVim() {
         echo -en "  Changing vim lightline theme..."
 
         cp $DIR/themes/$1/vim/lightline.vim $HOME/.vim/autoload/lightline/colorscheme/$1.vim
-        sed -i -e "s/'colorscheme': '.*',/'colorscheme': '$1',/g" $HOME/.vimrc
+        sed -i -e "s/'colorscheme': '.*',/'colorscheme': '$1',/g" $(readlink -f $HOME/.vimrc)
 
         echo -e "\E[37;32mDONE\033[0m"
     fi
