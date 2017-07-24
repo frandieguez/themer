@@ -121,7 +121,7 @@ call <SID>set_hi("StorageClass", s:mint, s:none, "NONE")
 call <SID>set_hi("String", s:color7, s:none, "NONE")
 call <SID>set_hi("Tag", s:color11, s:none, "NONE")
 call <SID>set_hi("Title", s:color7, s:none, "bold")
-call <SID>set_hi("Todo", s:color11, s:none, "inverse,bold")
+call <SID>set_hi("Todo", s:color11, s:none, "bold")
 call <SID>set_hi("Type", s:color14, s:none, "bold")
 call <SID>set_hi("Underlined", s:none, s:none, "underline")
 
