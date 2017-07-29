@@ -1,11 +1,3 @@
-;=====================================================
-;
-;   To learn more about how to configure Polybar
-;   go to https://github.com/jaagr/polybar
-;
-;   The README contains alot of information
-;
-;=====================================================
 [colors]
 background = #23323e
 foreground = #446980
@@ -22,58 +14,8 @@ menu-1 = item 2;command
 menu-1-0 = sub-item 2.1;command
 menu-1-1 = sub-item 2.2;command
 
-[bar/lvds]
-enable-ipc = true
-monitor = ${env:MONITOR:LVDS-1}
-width = 100%
-height = 27
-offset-x = 0
-offset-y = 0
-;radius = 6.0
-fixed-center = true
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 3
-line-color = ${colors.blue}
-
-;border-bottom-size = 2
-;border-color = ${colors.blue}
-
-padding-left = 0
-padding-right = 0
-
-module-margin-left = 1
-module-margin-right = 1
-
-font-0 = fixed:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
-font-3 = FontAwesome:size=10;2
-
-modules-left = powermenu bspwm i3 xwindow
-modules-center =
-modules-right = xbacklight xkeyboard memory cpu temperature wlan eth date volume battery
-
-tray-position = right
-tray-padding = 5
-tray-transparent = false
-tray-background = ${colors.background}
-
-wm-restack = bspwm
-;wm-restack = i3
-
-;override-redirect = true
-
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
-
-[bar/vga]
-monitor = ${env:MONITOR:VGA-1}
+[bar/offline]
+monitor = ${env:MONITOR}
 width = 100%
 height = 27
 ;offset-x = 1%
@@ -99,58 +41,9 @@ module-margin-right = 0
 font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
-font-3 = fontawesome:pixelsize=12;1
+font-3 = fontawesome:pixelsize=10;1
 
-modules-left = powermenu bspwm i3 xwindow
-modules-center =
-modules-right = filesystem xbacklight volume xkeyboard memory cpu wlan eth battery temperature date
-
-tray-position = right
-tray-padding = 5
-tray-transparent = false
-tray-background = ${colors.background}
-
-wm-restack = bspwm
-;wm-restack = i3
-
-;override-redirect = true
-
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
-
-[bar/hdmi]
-monitor = ${env:MONITOR:HDMI-1}
-width = 100%
-height = 27
-;offset-x = 1%
-;offset-y = 1%
-;radius = 6.0
-fixed-center = false
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 3
-line-color = #f00
-
-;border-size = 4
-border-color = #00000000
-
-padding-left = 0
-padding-right = 0
-
-module-margin-left = 2
-module-margin-right = 0
-
-font-0 = fixed:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
-font-3 = fontawesome:pixelsize=12;1
-
-modules-left = powermenu bspwm i3 xwindow
+modules-left = powermenu bspwm xwindow
 modules-center =
 modules-right = xbacklight xkeyboard memory cpu temperature wlan eth date volume battery
 
@@ -160,15 +53,11 @@ tray transparent = false
 tray-background = ${colors.background}
 
 wm-restack = bspwm
-;wm-restack = i3
 
 ;override-redirect = true
 
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
 
 [module/xwindow]
 type = internal/xwindow
@@ -229,33 +118,6 @@ ws-icon-4 = web;
 ws-icon-5 = music;
 ws-icon-default =
 
-[module/i3]
-type = internal/i3
-format = <label-state> <label-mode>
-index-sort = true
-wrapping-scroll = false
-
-label-mode-padding = 2
-label-mode-foreground = #000
-label-mode-background = ${colors.foreground}
-
-label-focused = F %index%
-label-focused-background = ${module/bspwm.label-focused-background}
-label-focused-underline = ${module/bspwm.label-focused-underline}
-label-focused-padding = ${module/bspwm.label-focused-padding}
-
-label-unfocused = U %index%
-label-unfocused-padding = ${module/bspwm.label-occupied-padding}
-
-label-visible = V %index%
-label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-background}
-label-visible-padding = ${self.label-focused-padding}
-
-label-urgent = %index%!
-label-urgent-background = ${module/bspwm.label-urgent-background}
-label-urgent-padding = ${module/bspwm.label-urgent-padding}
-
 [module/mpd]
 type = internal/mpd
 format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
@@ -311,7 +173,7 @@ label-foreground = ${colors.blue}
 
 [module/wlan]
 type = internal/network
-interface = wlp3s0
+interface = ${env:WLAN}
 interval = 3.0
 
 format-connected =  <ramp-signal><label-connected>

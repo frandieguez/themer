@@ -2,7 +2,11 @@
 
 DIR=`dirname $(readlink -f $0)`
 
-# Displays the command help
+# ---
+# Displays the command help and an error message, if present.
+#
+# @param $1 An error message.
+# ---
 function help() {
     if [ "$*" != "" ] ; then
         echo "themer: $*"
@@ -21,7 +25,9 @@ EOF
     exit 0;
 }
 
+# ---
 # Displays a list of available themes
+# ---
 function list() {
     echo "Available themes:"
 
@@ -35,7 +41,9 @@ function list() {
     exit 0
 }
 
-# Changes the current theme
+# ---
+# Changes the current theme.
+# ---
 function main() {
     LAST=`cat $DIR/last`
 
@@ -79,6 +87,11 @@ function main() {
     updateBspwm     $THEME
 }
 
+# ---
+# Updates the bspwm configuration.
+#
+# @param $1 The theme name.
+# ---
 function updateBspwm() {
     if [[ ! `type bspwm` ]] || [[ ! -f $DIR/themes/$1/bspwm/config ]]; then
         return
@@ -99,7 +112,11 @@ function updateBspwm() {
     fi
 }
 
-# Changes mutt theme
+# ---
+# Updates the mutt theme.
+#
+# @param $1 The theme name.
+# ---
 function updateMutt() {
     if [[ ! `type mutt` ]] || [[ ! -f $DIR/themes/$1/mutt/config ]]; then
         return
@@ -113,25 +130,34 @@ function updateMutt() {
     echo -e "\E[37;32mDONE\033[0m"
 }
 
-# Changes the polybar theme
+# ---
+# Changes the polybar theme.
+#
+# @param $1 The theme name.
+# ---
 function updatePolybar() {
     if [[ ! `type polybar` ]] || [[ ! -f $DIR/themes/$1/polybar/config ]]; then
         return
     fi
 
-    BAR=`cat /tmp/bar`
+    export MONITOR=`cat /tmp/monitor`
+    export WLAN=`ifconfig | grep wlp | cut -d ':' -f1`
 
     echo -en "  Changing polybar theme..."
 
     cp $DIR/themes/$1/polybar/config $HOME/.config/polybar/config
 
     killall polybar > /dev/null 2>&1
-    polybar $BAR > /tmp/polybar.log 2>&1 &
+    polybar offline > /tmp/polybar.log 2>&1 &
 
     echo -e "\E[37;32mDONE\033[0m"
 }
 
-# Changes the rofi theme
+# ---
+# Changes the rofi theme.
+#
+# @param $1 The theme name.
+# ---
 function updateRofi() {
     if [[ ! `type rofi` ]] || [[ ! -f $DIR/themes/$1/rofi/config ]]; then
         return
@@ -142,7 +168,11 @@ function updateRofi() {
     echo -e "\E[37;32mDONE\033[0m"
 }
 
-# Changes the termite theme
+# ---
+# Changes the termite theme.
+#
+# @param $1 The theme name.
+# ---
 function updateTermite() {
     if [[ ! `type termite` ]] || [[ ! -f $DIR/themes/$1/termite/config ]]; then
         return
@@ -154,7 +184,11 @@ function updateTermite() {
     echo -e "\E[37;32mDONE\033[0m"
 }
 
-# Changes the tmux theme
+# ---
+# Changes the tmux theme.
+#
+# @param $1 The theme name.
+# ---
 function updateTmux() {
     if [[ ! `type tmux` ]] || [[ ! -f $DIR/themes/$THEME/tmux/theme.conf ]]; then
         return
@@ -170,7 +204,11 @@ function updateTmux() {
     echo -e "\E[37;32mDONE\033[0m"
 }
 
-# Changes the vim theme
+# ---
+# Changes the vim colorschemes.
+#
+# @param $1 The theme name.
+# ---
 function updateVim() {
     if [[ ! `type vim` ]] ; then
         return
@@ -195,7 +233,11 @@ function updateVim() {
     fi
 }
 
-# Changes the current wallpaper
+# ---
+# Changes the current wallpaper.
+#
+# @param $1 The theme name.
+# ---
 function updateWallpaper() {
     if [[ ! -d $DIR/themes/$1/wallpaper  ]] || [[ ! `ls $DIR/themes/$1/wallpaper | grep ".*\.\(png\|jpg\)"` ]]; then
         return
