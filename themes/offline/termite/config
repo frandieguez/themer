@@ -81,4 +81,9 @@ color14 = #23bae2
 # white
 color7  = #b8babe
 color15 = #eceff4
+
+# background
 color16 = #1a1b22
+
+# foreground
+color17 = #ffffff
