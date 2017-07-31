@@ -141,6 +141,7 @@ function updatePolybar() {
     fi
 
     export MONITOR=`cat /tmp/monitor`
+    export AC=`ls /sys/class/power_supply | grep AC`
     export WLAN=`ifconfig | grep wlp | cut -d ':' -f1`
 
     echo -en "  Changing polybar theme..."
