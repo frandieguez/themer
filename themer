@@ -93,7 +93,7 @@ function main() {
 # @param $1 The theme name.
 # ---
 function updateBspwm() {
-    if [[ ! `type bspwm` ]] || [[ ! -f $DIR/themes/$1/bspwm/config ]]; then
+    if [[ ! -x `command -v bspwm` ]] || [[ ! -f $DIR/themes/$1/bspwm/config ]]; then
         return
     fi
 
@@ -102,14 +102,12 @@ function updateBspwm() {
     source $DIR/themes/$1/bspwm/config
     echo -e "\E[37;32mDONE\033[0m"
 
-    if [[ `type bspwm` ]]; then
-        for m in `mons | grep enabled | sed -e "s/\s\+/ /g" | cut -d ' ' -f2`; do
-            if [[ $m != $(cat /tmp/monitor) ]]; then
-                sleep 1
-                bspc config -m $m top_padding 0
-            fi
-        done
-    fi
+    for m in `mons | grep enabled | sed -e "s/\s\+/ /g" | cut -d ' ' -f2`; do
+        if [[ $m != $(cat /tmp/monitor) ]]; then
+            sleep 1
+            bspc config -m $m top_padding 0
+        fi
+    done
 }
 
 # ---
@@ -118,7 +116,7 @@ function updateBspwm() {
 # @param $1 The theme name.
 # ---
 function updateMutt() {
-    if [[ ! `type mutt` ]] || [[ ! -f $DIR/themes/$1/mutt/config ]]; then
+    if [[ ! -x `command -v mutt` ]] || [[ ! -f $DIR/themes/$1/mutt/config ]]; then
         return
     fi
 
@@ -136,7 +134,7 @@ function updateMutt() {
 # @param $1 The theme name.
 # ---
 function updatePolybar() {
-    if [[ ! `type polybar` ]] || [[ ! -f $DIR/themes/$1/polybar/config ]]; then
+    if [[ ! -x `command -v polybar` ]] || [[ ! -f $DIR/themes/$1/polybar/config ]]; then
         return
     fi
 
@@ -160,7 +158,7 @@ function updatePolybar() {
 # @param $1 The theme name.
 # ---
 function updateRofi() {
-    if [[ ! `type rofi` ]] || [[ ! -f $DIR/themes/$1/rofi/config ]]; then
+    if [[ ! -x `command -v rofi` ]] || [[ ! -f $DIR/themes/$1/rofi/config ]]; then
         return
     fi
 
@@ -175,7 +173,7 @@ function updateRofi() {
 # @param $1 The theme name.
 # ---
 function updateTermite() {
-    if [[ ! `type termite` ]] || [[ ! -f $DIR/themes/$1/termite/config ]]; then
+    if [[ ! -x `command -v termite` ]] || [[ ! -f $DIR/themes/$1/termite/config ]]; then
         return
     fi
 
@@ -191,7 +189,7 @@ function updateTermite() {
 # @param $1 The theme name.
 # ---
 function updateTmux() {
-    if [[ ! `type tmux` ]] || [[ ! -f $DIR/themes/$THEME/tmux/theme.conf ]]; then
+    if [[ ! -x `command -v tmux` ]] || [[ ! -f $DIR/themes/$THEME/tmux/theme.conf ]]; then
         return
     fi
 
@@ -211,7 +209,7 @@ function updateTmux() {
 # @param $1 The theme name.
 # ---
 function updateVim() {
-    if [[ ! `type vim` ]] ; then
+    if [[ ! -x `command -v vim` ]]; then
         return
     fi
 
