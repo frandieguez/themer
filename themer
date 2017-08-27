@@ -122,8 +122,10 @@ function updateMutt() {
 
     echo -en "  Changing mutt theme..."
 
-    sed $HOME/.muttrc -i -e "/^color.*$/d"
-    cat $DIR/themes/$1/mutt/config >> $HOME/.muttrc
+    cp $DIR/themes/$1/mutt/config $HOME/.config/mutt/theme
+
+    sed $HOME/.muttrc -i -e "/^source.*theme$/d"
+    echo "source ~/.config/mutt/theme" >> $HOME/.muttrc
 
     echo -e "\E[37;32mDONE\033[0m"
 }
