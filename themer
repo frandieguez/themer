@@ -194,10 +194,10 @@ function updateTmux() {
     fi
 
     echo -en "  Changing tmux theme..."
-    cp $DIR/themes/$THEME/tmux/theme.conf  $HOME/.tmux/theme.conf
+    cp $DIR/themes/$THEME/tmux/theme.conf $HOME/.config/tmux/theme.conf
 
     if [[ `ps aux | grep tmux | tail -n +2` ]]; then
-        tmux source-file $HOME/.tmux/theme.conf
+        tmux source-file $HOME/.config/tmux/theme.conf
     fi
 
     echo -e "\E[37;32mDONE\033[0m"
@@ -216,7 +216,11 @@ function updateVim() {
     if [[ -f $DIR/themes/$1/vim/colorscheme.vim ]]; then
         echo -en "  Changing vim theme..."
 
-        cp $DIR/themes/$1/vim/colorscheme.vim $HOME/.vim/colors/$1.vim
+        if [[ ! -d $HOME/.config/nvim/colors ]]; then
+            mkdir -p $HOME/.config/nvim/colors
+        fi
+
+        cp $DIR/themes/$1/vim/colorscheme.vim $HOME/.config/nvim/colors/$1.vim
         sed -i -e "s/^colorscheme\s\+.*$/colorscheme $1/g" $(readlink -f $HOME/.vimrc)
 
         echo -e "\E[37;32mDONE\033[0m"
@@ -225,7 +229,11 @@ function updateVim() {
     if [[ -f $DIR/themes/$1/vim/lightline.vim ]]; then
         echo -en "  Changing vim lightline theme..."
 
-        cp $DIR/themes/$1/vim/lightline.vim $HOME/.vim/autoload/lightline/colorscheme/$1.vim
+        if [[ ! -d $HOME/.config/nvim/autoload/lightline/colorscheme ]]; then
+            mkdir -p $HOME/.config/nvim/autoload/lightline/colorscheme
+        fi
+
+        cp $DIR/themes/$1/vim/lightline.vim $HOME/.config/nvim/autoload/lightline/colorscheme/$1.vim
         sed -i -e "s/'colorscheme': '.*',/'colorscheme': '$1',/g" $(readlink -f $HOME/.vimrc)
 
         echo -e "\E[37;32mDONE\033[0m"
