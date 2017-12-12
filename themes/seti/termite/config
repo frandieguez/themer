@@ -75,13 +75,15 @@ color6  = #a4c7d5
 color14 = #0396f7
 
 # white
-color7  = #405159
+color7  = #6d8086
 color15 = #f8fcf6
 
 # Extra colors
 color16 = #0d1011
-color17 = #8a553f
-color18 = #8ec43d
-color19 = #3d556d
-color20 = #43a5d5
-color21 = #eeeeee
+color17 = #d4d7d6
+color18 = #8a553f
+color19 = #8ec43d
+color20 = #3d556d
+color21 = #43a5d5
+color22 = #1c2327
+color23 = #db7b55
