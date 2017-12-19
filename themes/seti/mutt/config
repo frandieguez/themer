@@ -16,7 +16,7 @@ color header color12 color16 'From: .*'
 color header color2 color16 'Date: .*'
 color header color17 color16 'Subject: .*'
 color header color23 color16 'To: .*'
-color message color12 color16
+color message color17 color16
 color body color6 color16 '.*'
 color bold color15 color16
 color signature color13 color16
