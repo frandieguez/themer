@@ -3,5 +3,5 @@
 bspc config border_width         2
 bspc config normal_border_color  \#0f1317
 bspc config active_border_color  \#0f1317
-bspc config focused_border_color \#1c2327
+bspc config focused_border_color \#638ea1
 bspc config window_gap           15

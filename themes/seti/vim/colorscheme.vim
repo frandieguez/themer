@@ -98,7 +98,7 @@ call <SID>set_hi("PmenuSel",                     s:none,       s:color6,     "NO
 
 " Status
 call <SID>set_hi("StatusLine",                   s:color15,    s:color0,     "NONE")
-call <SID>set_hi("StatusLineNC",                 s:color15,    s:color0,     "NONE")
+call <SID>set_hi("StatusLineNC",                 s:none,       s:color0,     "NONE")
 call <SID>set_hi("Title",                        s:color9,     s:none,       "NONE")
 
 " Visual aid
