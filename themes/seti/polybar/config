@@ -1,8 +1,12 @@
 [colors]
 background = #0f1317
-foreground = #626f7d
-alert = #cc3e43
+foreground = #3b536a
 active = #d5d5d5
+alert = #cc3e43
+black = #181f23
+blue = #0396f7
+green = #1bfc7a
+yellow = #fed02e
 
 [modules/xmenu]
 menu-0 = item 1;command
@@ -16,7 +20,7 @@ menu-1-1 = sub-item 2.2;command
 [bar/offline]
 monitor = ${env:MONITOR}
 width = 100%
-height = 27
+height = 24
 ;offset-x = 1%
 ;offset-y = 1%
 ;radius = 6.0
@@ -25,7 +29,7 @@ fixed-center = false
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 3
+line-size = 0
 line-color = #f00
 
 ;border-size = 4
@@ -34,19 +38,19 @@ border-color = #00000000
 padding-left = 0
 padding-right = 0
 
-module-margin-left = 2
+module-margin-left = 0
 module-margin-right = 0
 
-font-0 = fixed:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
-font-3 = fontawesome:pixelsize=10;1
+font-0 = fixed:pixelsize=10;2
+font-1 = Knack Nerd Font:pixelsize=16;4
+font-2 = siji:pixelsize=12;1
+font-3 = fontawesome:pixelsize=12;1
 
 modules-left = powermenu bspwm xwindow
 modules-center =
 modules-right = xbacklight xkeyboard memory cpu temperature wlan eth date volume battery
 
-tray-position = right
+tray-position = center
 tray-padding = 5
 tray transparent = false
 tray-background = ${colors.background}
@@ -61,7 +65,8 @@ scroll-down = bspwm-deskprev
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
-label-foreground = ${colors.active}
+format-prefix = "  "
+format-foreground = ${colors.active}
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -88,22 +93,25 @@ label-unmounted-foreground = ${colors.foreground-alt}
 [module/bspwm]
 type = internal/bspwm
 pin-workspaces = false
+format-background = ${colors.background}
+format-suffix = ""
+format-suffix-foreground = ${colors.foreground}
 
-label-normal = %icon%
+label-normal = 
 
-label-focused = %icon%
+label-focused = 
 label-focused-foreground = ${colors.active}
 label-focused-padding = 2
 
-label-occupied = %icon%
+label-occupied = 
 label-occupied-foreground = ${colors.foreground}
 label-occupied-padding = 2
 
-label-urgent = %icon%
+label-urgent = 
 label-urgent-foreground = ${colors.alert}
 label-urgent-padding = 2
 
-label-empty = %icon%
+label-empty = 
 label-empty-foreground = ${colors.foreground}
 label-empty-padding = 2
 
@@ -155,20 +163,22 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
+format-background = ${colors.blue}
+format-foreground = ${colors.active}
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground}
-format-prefix-padding-left = 1
+format-prefix-padding-left = 2
 label = %percentage%%
-label-foreground = ${colors.foreground}
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground}
-format-prefix-padding-left = 1
-label = %percentage_used%%
-label-foreground = ${colors.foreground}
+format-background = ${colors.blue}
+format-prefix = ""
+format-prefix-background = ${colors.background}
+format-prefix-foreground = ${colors.blue}
+format-prefix-padding-left = 2
+label = "  %percentage_used%%"
+label-foreground = ${colors.active}
 
 [module/wlan]
 type = internal/network
@@ -215,30 +225,39 @@ type = internal/date
 interval = 1
 
 date =
-date-alt = " %Y-%m-%d"
+date-alt = " %Y-%m-%d"
 
-time = %H:%M
-time-alt = %H:%M:%S
+time = " %H:%M"
+time-alt = " %H:%M:%S"
 
-;format-prefix = 
-format-prefix = 
+format-prefix = 
+format-prefix-background = ${colors.blue}
 format-prefix-foreground = ${colors.foreground}
 
 label = %date% %time%
-label-foreground = ${colors.foreground}
+label-background = ${colors.foreground}
+label-foreground = ${colors.active}
 format-prefix-padding-left = 1
 label-padding-right = 1
 
 [module/volume]
 type = internal/volume
 
+format-volume-prefix = ""
+format-volume-prefix-background = ${colors.foreground}
+format-volume-prefix-foreground = ${colors.black}
+format-volume-prefix-black = ${colors.black}
 format-volume = <ramp-volume> <label-volume>
-format-volume-foreground = ${colors.foreground}
-label-volume = %percentage%%
+format-volume-background = ${colors.black}
+format-volume-foreground = ${colors.active}
+format-volume-black = ${colors.black}
+label-volume = "%percentage%% "
 
-format-muted-prefix = " "
-format-muted-foreground = ${colors.active}
-label-muted =  muted
+format-muted-prefix = ""
+format-muted-prefix-background = ${colors.foreground}
+format-muted-prefix-foreground = ${colors.black}
+format-muted-foreground = ${colors.foreground}
+label-muted = " muted "
 
 ramp-volume-0 = ""
 ramp-volume-1 = ""
@@ -268,19 +287,26 @@ battery = BAT0
 adapter = ${env:AC}
 full-at = 98
 
-format-charging = <animation-charging> <label-charging>
-format-charging-foreground = ${colors.active}
-format-charging-padding = 2
-label-charging-foreground = ${colors.active}
+format-charging = "<animation-charging> <label-charging> "
+format-charging-background = ${colors.yellow}
+format-charging-foreground = ${colors.background}
+format-charging-prefix = ""
+format-charging-prefix-background = ${colors.black}
+format-charging-prefix-foreground = ${colors.yellow}
 
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground}
-format-full-padding = 2
-label-full-foreground = ${colors.foreground}
+format-full = "<ramp-capacity> <label-full> "
+format-full-prefix = ""
+format-full-prefix-background = ${colors.black}
+format-full-prefix-foreground = ${colors.active}
+format-full-background = ${colors.active}
+format-full-foreground = ${colors.black}
 
-format-discharging = <ramp-capacity> <label-discharging>
+format-discharging = "<ramp-capacity> <label-discharging> "
+format-discharging-background = ${colors.alert}
 format-discharging-foreground = ${colors.active}
-format-discharging-padding = 2
+format-discharging-prefix = ""
+format-discharging-prefix-background = ${colors.black}
+format-discharging-prefix-foreground = ${colors.alert}
 label-discharging-foreground = ${colors.active}
 
 ramp-capacity-0 = 
@@ -294,8 +320,7 @@ animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
-animation-charging-foreground = ${colors.active}
-animation-charging-framerate = 750
+animation-charging-framerate = 1000
 
 [module/temperature]
 type = internal/temperature
@@ -305,13 +330,14 @@ label-transparent = true
 
 format = <ramp> <label>
 format-warn = <ramp> <label-warn>
-format-foreground = ${colors.foreground}
-format-warn-foreground = ${colors.active}
+format-background = ${colors.blue}
+format-foreground = ${colors.active}
+format-warn-foreground = ${colors.alert}
 
 label = %temperature%
 label-padding-right = 1
 label-warn =  %temperature%
-ramp-padding-left = 1
+ramp-padding-left = 2
 
 ramp-0 = 
 ramp-1 = 
@@ -324,38 +350,41 @@ ramp-5 = 
 type = custom/menu
 
 format-spacing = 0
+format-suffix =  ""
+format-suffix-background = ${colors.background}
+format-suffix-foreground = ${colors.active}
 
 label-open =  
-label-open-background = #0000
-label-open-foreground = ${colors.foreground}
+label-open-background = ${colors.active}
+label-open-foreground = ${colors.background}
 label-open-padding = 2
 
 label-close = 
 label-close-padding = 2
-label-close-background = #0000
-label-close-foreground = ${colors.active}
-label-separator = |
-label-separator-background = #0000
-label-separator-foreground = ${colors.foreground}
+label-close-background = ${colors.active}
+label-close-foreground = ${colors.background}
+label-separator = 
+label-separator-background = ${colors.active}
+label-separator-foreground = ${colors.background}
 
 ; Lock
 menu-0-0 = 
 menu-0-0-exec = slimlock
 menu-0-0-padding = 2
-menu-0-0-background = #0000
-menu-0-0-foreground = ${colors.active}
+menu-0-0-background = ${colors.active}
+menu-0-0-foreground = ${colors.background}
 ; Reboot
 menu-0-1 = 
 menu-0-1-exec = reboot
 menu-0-1-padding = 2
-menu-0-1-background = #0000
-menu-0-1-foreground = ${colors.active}
+menu-0-1-background = ${colors.active}
+menu-0-1-foreground = ${colors.background}
 ; Poweroff
 menu-0-2 = 
 menu-0-2-exec = shutdown -P now
 menu-0-2-padding = 2
-menu-0-2-background = #0000
-menu-0-2-foreground = ${colors.active}
+menu-0-2-background = ${colors.active}
+menu-0-2-foreground = ${colors.background}
 
 [settings]
 screenchange-reload = true
