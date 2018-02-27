@@ -332,11 +332,15 @@ format = <ramp> <label>
 format-warn = <ramp> <label-warn>
 format-background = ${colors.blue}
 format-foreground = ${colors.active}
+format-warn-background = ${colors.blue}
 format-warn-foreground = ${colors.alert}
 
 label = %temperature%
 label-padding-right = 1
+
 label-warn =  %temperature%
+label-warn-padding-right = 1
+
 ramp-padding-left = 2
 
 ramp-0 = 
