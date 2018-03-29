@@ -42,9 +42,8 @@ module-margin-left = 0
 module-margin-right = 0
 
 font-0 = fixed:pixelsize=10;2
-font-1 = Knack Nerd Font:pixelsize=16;4
-font-2 = siji:pixelsize=12;1
-font-3 = fontawesome:pixelsize=12;1
+font-1 = fontawesome:pixelsize=12;2
+font-2 = Knack Nerd Font:pixelsize=16;4
 
 modules-left = powermenu bspwm xwindow
 modules-center =
@@ -147,12 +146,9 @@ label = BL
 bar-width = 10
 bar-indicator = |
 bar-indicator-foreground = #ff
-bar-indicator-font = 2
 bar-fill = ─
-bar-fill-font = 2
 bar-fill-foreground = #9f78e1
 bar-empty = ─
-bar-empty-font = 2
 bar-empty-foreground = ${colors.foreground-alt}
 
 [module/backlight-acpi]
@@ -233,11 +229,11 @@ time-alt = " %H:%M:%S"
 format-prefix = 
 format-prefix-background = ${colors.blue}
 format-prefix-foreground = ${colors.foreground}
+format-prefix-padding-left = 1
 
 label = %date% %time%
 label-background = ${colors.foreground}
 label-foreground = ${colors.active}
-format-prefix-padding-left = 1
 label-padding-right = 1
 
 [module/volume]
@@ -274,11 +270,8 @@ bar-volume-foreground-5 = #f5a70a
 bar-volume-foreground-6 = #ff5555
 bar-volume-gradient = false
 bar-volume-indicator = |
-bar-volume-indicator-font = 2
 bar-volume-fill = ─
-bar-volume-fill-font = 2
 bar-volume-empty = ─
-bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
@@ -373,22 +366,24 @@ label-separator-foreground = ${colors.background}
 
 ; Lock
 menu-0-0 = 
-menu-0-0-exec = slimlock
-menu-0-0-padding = 2
 menu-0-0-background = ${colors.active}
+menu-0-0-exec = slimlock
 menu-0-0-foreground = ${colors.background}
+menu-0-0-padding = 2
+
 ; Reboot
 menu-0-1 = 
-menu-0-1-exec = reboot
-menu-0-1-padding = 2
 menu-0-1-background = ${colors.active}
+menu-0-1-exec = reboot
 menu-0-1-foreground = ${colors.background}
+menu-0-1-padding = 2
+
 ; Poweroff
 menu-0-2 = 
-menu-0-2-exec = shutdown -P now
-menu-0-2-padding = 2
 menu-0-2-background = ${colors.active}
+menu-0-2-exec = shutdown -P now
 menu-0-2-foreground = ${colors.background}
+menu-0-2-padding = 2
 
 [settings]
 screenchange-reload = true
