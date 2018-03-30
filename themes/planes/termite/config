@@ -1,0 +1,74 @@
+[options]
+scroll_on_output = false
+scroll_on_keystroke = true
+audible_bell = false
+mouse_autohide = true
+allow_bold = true
+dynamic_title = true
+urgent_on_bell = true
+clickable_url = true
+font = Knack Nerd Font 12
+scrollback_lines = 10000
+search_wrap = true
+icon_name = terminal
+#geometry = 640x480
+
+# "system", "on" or "off"
+cursor_blink = on
+
+# "block", "underline" or "ibeam"
+cursor_shape = block
+
+# set size hints for the window
+size_hints = true
+
+# Hide links that are no longer valid in url select overlay mode
+filter_unmatched_urls = true
+
+# emit escape sequences for extra modified keys
+#modify_other_keys = true
+
+
+[colors]
+
+# special
+foreground      = #dbdcdd
+foreground_bold = #dbdcdd
+cursor          = #70a058
+background      = #1c1d22
+
+# black
+color0  = #27282C
+color8  = #636363
+
+# red
+color1  = #f0593f
+color9  = #f0593f
+
+# green
+color2  = #70a058
+color10 = #70a058
+
+# yellow
+color3  = #efe169
+color11 = #efe169
+
+# blue
+color4  = #4164a3
+color12 = #4164a3
+
+# magenta
+color5  = #8a4398
+color13 = #8a4398
+
+# cyan
+color6  = #5ee5fb
+color14 = #5ee5fb
+
+# white
+color7  = #ffffff
+color15 = #ffffff
+
+color16 = #1c1d22
+color17 = #dbdcdd
+
