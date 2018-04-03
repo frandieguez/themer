@@ -149,7 +149,7 @@ function updatePolybar() {
     cp $DIR/themes/$1/polybar/config $HOME/.config/polybar/config
 
     killall polybar > /dev/null 2>&1
-    polybar offline > /tmp/polybar.log 2>&1 &
+    polybar top > /tmp/polybar.log 2>&1 &
 
     echo -e "\E[37;32mDONE\033[0m"
 }
