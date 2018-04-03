@@ -69,6 +69,12 @@ color14 = #5ee5fb
 color7  = #ffffff
 color15 = #ffffff
 
+# Extra colors
 color16 = #1c1d22
 color17 = #dbdcdd
-
+color18 = #8a553f
+color19 = #8ec43d
+color20 = #3d556d
+color21 = #43a5d5
+color22 = #3a4749
+color23 = #ff7944
