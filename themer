@@ -124,7 +124,7 @@ function updateMutt() {
 
     cp $DIR/themes/$1/mutt/config $HOME/.config/mutt/theme
 
-    sed $HOME/.muttrc -i -e "/^source.*theme$/d"
+    sed -i -e "/^source.*theme$/d" $(readlink -f $HOME/.muttrc)
     echo "source ~/.config/mutt/theme" >> $HOME/.muttrc
 
     echo -e "\E[37;32mDONE\033[0m"
