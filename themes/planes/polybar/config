@@ -287,6 +287,7 @@ format-charging-foreground = ${colors.yellow}
 format-charging-prefix = "|"
 format-charging-prefix-background = ${colors.background}
 format-charging-prefix-foreground = ${colors.foreground}
+format-charging-prefix-padding = 1
 label-charging-foreground = ${colors.yellow}
 
 format-full = "<ramp-capacity> <label-full> "
@@ -303,7 +304,7 @@ format-discharging-foreground = ${colors.alert}
 format-discharging-prefix = "|"
 format-discharging-prefix-background = ${colors.background}
 format-discharging-prefix-foreground = ${colors.foreground}
-format-discharging-prefix-padding = "2"
+format-discharging-prefix-padding = 1
 label-discharging-foreground = ${colors.alert}
 
 ramp-capacity-0 = 
