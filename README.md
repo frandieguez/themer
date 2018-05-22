@@ -53,4 +53,4 @@ To install a theme execute:
 $ themer <theme>
 ```
 
-> Themer will automatically reload configuration for bspwm, polybar, rofi, termite and tmux, no restart required.  Vim and mutt have to be restarted to use the installed theme.
+> Themer will automatically reload configuration for bspwm, polybar, rofi, termite and tmux, no restart required. Vim and mutt have to be restarted to use the installed theme.
