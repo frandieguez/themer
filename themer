@@ -257,7 +257,13 @@ function updateWallpaper() {
     echo -en "  Changing wallpaper..."
 
     WALLPAPER=`ls $DIR/themes/$1/wallpaper | grep ".*\.\(png\|jpg\)"`
-    feh --bg-scale $DIR/themes/$1/wallpaper/$WALLPAPER &
+    ARGS='';
+
+    for w in $WALLPAPER; do
+        ARGS="$ARGS--bg-scale $DIR/themes/$1/wallpaper/$w "
+    done
+
+    feh $ARGS
 
     echo -e "\E[37;32mDONE\033[0m"
 }
