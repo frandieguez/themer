@@ -27,7 +27,7 @@ rofi.kb-mode-previous:    Shift+Left,Control+h
 rofi.kb-row-up:           Up,Control+k
 rofi.kb-row-down:         Down,Control+j
 rofi.location:            2
-rofi.yoffset:             45
+rofi.yoffset:             60
 rofi.fixed-num-lines:     true
 rofi.lines:               5
 rofi.hide-scrollbar:      true
