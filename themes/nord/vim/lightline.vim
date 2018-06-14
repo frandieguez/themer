@@ -27,7 +27,7 @@ let s:p.normal.left     = [ [ s:color0, s:color15 ], [ s:color15, s:color8 ] ]
 let s:p.insert.left     = [ [ s:color0, s:color10 ], [ s:color10, s:color8 ] ]
 let s:p.replace.left    = [ [ s:color0, s:color9 ], [ s:color9, s:color8 ] ]
 let s:p.visual.left     = [ [ s:color0, s:color3 ], [ s:color3, s:color8 ] ]
-let s:p.inactive.left   = [ [ s:color16, s:color0 ], [ s:color7, s:color0 ] ]
+let s:p.inactive.left   = [ [ s:color15, s:color0 ], [ s:color7, s:color0 ] ]
 
 let s:p.normal.middle   = [ [ s:color15, s:color0 ] ]
 
@@ -35,7 +35,7 @@ let s:p.normal.right    = [ [ s:color0, s:color15 ], [ s:color15, s:color8 ] ]
 let s:p.insert.right    = [ [ s:color0, s:color10 ], [ s:color10, s:color8 ] ]
 let s:p.replace.right   = [ [ s:color0, s:color9 ], [ s:color9, s:color8 ] ]
 let s:p.visual.right    = [ [ s:color0, s:color3 ], [ s:color3, s:color8 ] ]
-let s:p.inactive.right  = [ [ s:color16, s:color0 ], [ s:color16, s:color0 ] ]
+let s:p.inactive.right  = [ [ s:color15, s:color0 ], [ s:color15, s:color0 ] ]
 
 let s:p.normal.warning  = [ [ s:color0, s:color11 ] ]
 let s:p.insert.warning  = [ [ s:color10, s:color0 ] ]

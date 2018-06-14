@@ -66,7 +66,7 @@ font-2 = Knack Nerd Font:pixelsize=14;2
 
 modules-left = powermenu bspwm xwindow
 modules-center =
-modules-right = xbacklight memory cpu temperature wlan eth volume date time battery
+modules-right = xbacklight memory cpu temperature wlan eth volume time date battery
 
 tray-position = center
 tray-padding = 5
