@@ -76,7 +76,7 @@ call <SID>set_hi("Normal",                       s:color15,    s:none,       "NO
 
 " Number column
 call <SID>set_hi("CursorColumn",                 s:none,       s:color5,     "NONE")
-call <SID>set_hi("FoldColumn",                   s:color6,     s:color0,     "NONE")
+call <SID>set_hi("FoldColumn",                   s:color6,     s:none,       "NONE")
 call <SID>set_hi("Folded",                       s:color6,     s:none,       "NONE")
 call <SID>set_hi("SignColumn",                   s:color6,     s:none,       "NONE")
 
@@ -89,8 +89,8 @@ call <SID>set_hi("TabLineSel",                   s:none,       s:none,       "NO
 
 " File Navigation/Searching
 call <SID>set_hi("Directory",                    s:color3,     s:none,       "NONE")
-call <SID>set_hi("IncSearch",                    s:color0,     s:color3,     "NONE")
-call <SID>set_hi("Search",                       s:color0,     s:color3,     "NONE")
+call <SID>set_hi("IncSearch",                    s:color0,     s:color4,     "NONE")
+call <SID>set_hi("Search",                       s:color0,     s:color4,     "NONE")
 
 " Completion menu
 call <SID>set_hi("Pmenu",                        s:none,       s:color0,     "NONE")
