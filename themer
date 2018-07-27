@@ -148,8 +148,14 @@ function updatePolybar() {
 
     cp $DIR/themes/$1/polybar/config $HOME/.config/polybar/config
 
+    bars=$(grep "\[bar/.*\]" $HOME/.config/polybar/config | \
+        sed -e "s/\[bar\/\(.*\)\]/\1/g")
+
     killall polybar > /dev/null 2>&1
-    polybar top > /tmp/polybar.log 2>&1 &
+
+    for bar in $bars; do
+        polybar $bar > /tmp/polybar.log 2>&1 &
+    done
 
     echo -e "\E[37;32mDONE\033[0m"
 }
