@@ -229,7 +229,8 @@ function updateVim() {
         fi
 
         cp $DIR/themes/$1/vim/colorscheme.vim $HOME/.config/nvim/colors/$1.vim
-        sed -i -e "s/^colorscheme\s\+.*$/colorscheme $1/g" $(readlink -f $HOME/.vimrc)
+        sed -i -e "/^colorscheme.*$/d" $HOME/.config/nvim/autoload/theme.vim
+        echo "colorscheme $1" >> $HOME/.config/nvim/autoload/theme.vim
 
         echo -e "\E[37;32mDONE\033[0m"
     fi
@@ -242,7 +243,8 @@ function updateVim() {
         fi
 
         cp $DIR/themes/$1/vim/lightline.vim $HOME/.config/nvim/autoload/lightline/colorscheme/$1.vim
-        sed -i -e "s/'colorscheme': '.*',/'colorscheme': '$1',/g" $(readlink -f $HOME/.vimrc)
+        sed -i -e "/source.*/d" $HOME/.config/nvim/autoload/theme.vim
+        echo "source ~/.vim/autoload/lightline/colorscheme/$1.vim" >> $HOME/.config/nvim/autoload/theme.vim
 
         echo -e "\E[37;32mDONE\033[0m"
     fi
