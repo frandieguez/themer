@@ -39,9 +39,9 @@ scroll-down = bspwm-deskprev
 module-margin-left = 0
 module-margin-right = 0
 
-modules-left = bspwm xwindow
+modules-left = p-b-l bspwm
 modules-center =
-modules-right = powermenu
+modules-right = xwindow powermenu p-b-r
 
 tray-position = center
 tray-padding = 5
@@ -75,9 +75,9 @@ font-0 = fixed:pixelsize=10;2
 font-1 = fontawesome:pixelsize=12;2
 font-2 = DroidSansMono Nerd Font Mono:pixelsize=18;4
 
-modules-left = memory cpu temperature
+modules-left = p-t-l memory cpu temperature
 modules-center = date
-modules-right = xbacklight wlan volume battery
+modules-right = xbacklight wlan volume battery p-t-r
 
 wm-restack = bspwm
 
@@ -90,14 +90,14 @@ scroll-down = bspwm-deskprev
 type = internal/xwindow
 label = %title:0:30:...%
 label-margin = 2
-format-prefix = 
 format-background = ${colors.background}
-format-suffix = 
+format-foreground = ${colors.black}
+format-prefix = 
 format-prefix-background = ${colors.foreground}
 format-prefix-foreground = ${colors.background}
+format-suffix = 
 format-suffix-background = ${colors.foreground}
 format-suffix-foreground = ${colors.background}
-format-foreground = ${colors.black}
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -125,7 +125,7 @@ label-unmounted-foreground = ${colors.foreground-alt}
 type = internal/bspwm
 pin-workspaces = false
 format-background = ${colors.background}
-format-prefix =
+format-prefix = 
 format-prefix-background = ${colors.foreground}
 format-prefix-foreground = ${colors.background}
 format-suffix = 
@@ -159,6 +159,26 @@ ws-icon-3 = im;
 ws-icon-4 = web;
 ws-icon-5 = music;
 ws-icon-default =
+
+[module/p-b-l]
+type = custom/text
+content = 
+content-foreground = ${colors.background}
+
+[module/p-b-r]
+type = custom/text
+content = 
+content-foreground = ${colors.background}
+
+[module/p-t-r]
+type = custom/text
+content = 
+content-foreground = ${colors.background}
+
+[module/p-t-l]
+type = custom/text
+content = 
+content-foreground = ${colors.background}
 
 [module/mpd]
 type = internal/mpd
@@ -213,7 +233,7 @@ interval = 2
 format-background = ${colors.background}
 label = " RAM: %percentage_used%%"
 label-foreground = ${colors.black}
-format-prefix =
+format-prefix = 
 format-prefix-background = #17bebb
 format-prefix-foreground = ${colors.background}
 format-suffix = 
@@ -322,7 +342,7 @@ format-charging = "<animation-charging> <label-charging> "
 format-charging-background = ${colors.yellow}
 format-charging-foreground = ${colors.background}
 format-charging-prefix = 
-format-charging-suffix =
+format-charging-suffix = 
 format-charging-prefix-background = #17bebb
 format-charging-suffix-background = #17bebb
 format-charging-prefix-foreground = ${colors.yellow}
@@ -330,7 +350,7 @@ format-charging-suffix-foreground = ${colors.yellow}
 
 format-full = "<ramp-capacity> <label-full> "
 format-full-prefix = 
-format-full-suffix =
+format-full-suffix = 
 format-full-prefix-background = #17bebb
 format-full-suffix-background = #17bebb
 format-full-prefix-foreground = ${colors.background}
@@ -342,7 +362,7 @@ format-discharging = "<ramp-capacity> <label-discharging> "
 format-discharging-background = ${colors.alert}
 format-discharging-foreground = ${colors.background}
 format-discharging-prefix = 
-format-discharging-suffix =
+format-discharging-suffix = 
 format-discharging-prefix-background = #17bebb
 format-discharging-suffix-background = #17bebb
 format-discharging-prefix-foreground = ${colors.alert}
@@ -406,8 +426,7 @@ ramp-5 = 
 type = custom/menu
 
 format-prefix = 
-format-suffix =
-format-prefix-padding-left = 2
+format-suffix = 
 format-prefix-foreground = ${colors.background}
 format-suffix-foreground = ${colors.background}
 
