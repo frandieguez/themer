@@ -1,0 +1,64 @@
+[options]
+scroll_on_output = false
+scroll_on_keystroke = true
+audible_bell = false
+mouse_autohide = true
+allow_bold = true
+dynamic_title = true
+urgent_on_bell = true
+clickable_url = true
+font = DroidSansMono Nerd Font Mono 12
+scrollback_lines = 10000
+search_wrap = true
+icon_name = terminal
+#geometry = 640x480
+
+# "system", "on" or "off"
+cursor_blink = on
+
+# "block", "underline" or "ibeam"
+cursor_shape = block
+
+# set size hints for the window
+size_hints = true
+
+# Hide links that are no longer valid in url select overlay mode
+filter_unmatched_urls = true
+
+# emit escape sequences for extra modified keys
+#modify_other_keys = true
+
+[colors]
+foreground        = #E5E5E5
+background        = #0F1819
+foreground_bold   = #F6F6F6
+cursor            = #D8DEE9
+cursor_foreground = #0F1819
+highlight         = #4C566A
+
+color0  = #172226
+color1  = #DE425B
+color2  = #B5EEA2
+color3  = #FFFFA0
+color4  = #2D869F
+color5  = #AB8AC9
+color6  = #17BEBB
+color7  = #E5E5E5
+color8  = #202D35
+color9  = #DE425B
+color10 = #B5EEA2
+color11 = #FFFFA0
+color12 = #2D869F
+color13 = #AB8AC9
+color14 = #17BEBB
+color15 = #F6F6F6
+
+# Extra colors
+color16 = #0F1819
+color17 = #DBDCDD
+color18 = #8A553F
+color19 = #8EC43D
+color20 = #3D556D
+color21 = #43A5D5
+color22 = #3A4749
+color23 = #FF7944
