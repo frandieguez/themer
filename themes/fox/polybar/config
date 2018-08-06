@@ -22,7 +22,7 @@ menu-1-1 = sub-item 2.2;command
 height = 24
 background =
 bottom = true
-fixed-center = false
+fixed-center = true
 monitor = ${env:MONITOR}
 padding-left = 0
 padding-right = 0
@@ -40,12 +40,13 @@ module-margin-left = 0
 module-margin-right = 0
 
 modules-left = p-b-l bspwm
-modules-center =
+modules-center = p-b-r p-b p-b-l
 modules-right = xwindow powermenu p-b-r
 
 tray-position = center
+tray-background = ${colors.background}
 tray-padding = 5
-tray transparent = true
+tray-transparent = false
 
 [bar/top]
 height = 24
@@ -54,7 +55,7 @@ width = 100%
 ;offset-x = 1%
 ;offset-y = 1%
 ;radius = 6.0
-fixed-center = false
+fixed-center = true
 
 background =
 foreground = ${colors.foreground}
@@ -160,10 +161,16 @@ ws-icon-4 = web;
 ws-icon-5 = music;
 ws-icon-default =
 
+[module/p-b]
+type = custom/text
+content = "                     "
+content-background = ${colors.background}
+
 [module/p-b-l]
 type = custom/text
 content = 
 content-foreground = ${colors.background}
+
 
 [module/p-b-r]
 type = custom/text
@@ -270,7 +277,7 @@ interval = 1
 date =
 date-alt = " %Y-%m-%d"
 
-time = " %H:%M"
+time = "   %H:%M   "
 time-alt = " %H:%M:%S"
 
 format-prefix = 
