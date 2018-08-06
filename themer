@@ -20,6 +20,7 @@ Changes the wallpaper and current theme for bspwm, polybar and more.
 Options:
   -h, --help    Display this help and exit
   -l, --list    Display the list of available themes
+  -r, --random  Applies a random theme
 EOF
 
     exit 0;
@@ -53,6 +54,8 @@ function main() {
 
             -l | --list ) list ;;
 
+            -r | --random ) THEME=$(random) ;;
+
             -*)           help "Unknown option '$1'" ;;
             * )           THEME=$1 ;;
         esac
@@ -61,7 +64,7 @@ function main() {
     done
 
     # Apply last used theme
-    if [[ ! $THEME ]] && [[  $LAST ]]; then
+    if [[ ! $THEME ]] && [[ $LAST ]]; then
         THEME=$LAST
     fi
 
@@ -85,6 +88,25 @@ function main() {
     updateWallpaper $THEME
 
     updateBspwm     $THEME
+}
+
+# ---
+# Returns a random theme.
+# ---
+function random() {
+    themes=$(list | cut -d':' -f 2)
+    size=$(echo "$themes" | wc -w)
+
+    i=0
+    array=()
+    for t in $themes; do
+        array[$i]="$t"
+        i=$(($i+1))
+    done
+
+    theme=$(($RANDOM % $size))
+
+    echo ${array[$theme]}
 }
 
 # ---
