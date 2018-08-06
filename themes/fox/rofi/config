@@ -1,4 +1,4 @@
-rofi.font:                Knack Nerd Font 12
+rofi.font:                Hack Nerd Font 12
 rofi.color-enabled:       true
 !                         #bg-even #fg      #bg-odd  #bg-focus, #fg-focus
 rofi.color-normal:        #0F1819, #E5E9F0, #0F1819, #0F1819,   #17BEBB

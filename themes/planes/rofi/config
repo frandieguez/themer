@@ -1,4 +1,4 @@
-rofi.font:                Knack Nerd Font 18
+rofi.font:                Hack Nerd Font 18
 rofi.color-enabled:       true
 rofi.color-normal:        #00000000, #636363, #00000000, #27282c, #dbdcdd
 rofi.color-urgent:        #4164a3, #dbdcdd, #00000000, #4164a3, #dbdcdd
