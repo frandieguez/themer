@@ -101,13 +101,6 @@ function updateBspwm() {
     cp $DIR/themes/$1/bspwm/config $HOME/.config/bspwm/theme
     source $HOME/.config/bspwm/theme
     echo -e "\E[37;32mDONE\033[0m"
-
-    for m in `mons | grep enabled | sed -e "s/\s\+/ /g" | cut -d ' ' -f2`; do
-        if [[ $m != $(cat /tmp/monitor) ]]; then
-            sleep 1
-            bspc config -m $m top_padding 0
-        fi
-    done
 }
 
 # ---
@@ -156,6 +149,25 @@ function updatePolybar() {
     for bar in $bars; do
         polybar $bar > /tmp/polybar.log 2>&1 &
     done
+
+    for m in `mons | grep "enabled" | sed -e "s/\s\+/ /g" | cut -d ' ' -f2`; do
+        bspc config -m $m top_padding 0
+        bspc config -m $m bottom_padding 0
+    done
+
+    # Fix top padding for primary monitor
+    if [ $(grep "bar/top" ~/.config/polybar/config) ]; then
+        height=$(grep "bar/top" ~/.config/polybar/config -A 1 | \
+            grep "height" | sed -e "s/height\s*=\s*//g")
+        bspc config -m $PRIMARY top_padding $height
+    fi
+
+    # Fix bottom padding for primary monitor
+    if [ $(grep "bar/bottom" ~/.config/polybar/config) ]; then
+        height=$(grep "bar/bottom" ~/.config/polybar/config -A 1 | \
+            grep "height" | sed -e "s/height\s*=\s*//g")
+        bspc config -m $PRIMARY bottom_padding $height
+    fi
 
     echo -e "\E[37;32mDONE\033[0m"
 }
