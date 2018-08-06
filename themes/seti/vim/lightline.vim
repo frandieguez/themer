@@ -43,3 +43,4 @@ let s:p.tabline.middle  = [ [ s:color15, s:color0 ] ]
 let s:p.tabline.right   = copy(s:p.normal.right)
 
 let g:lightline#colorscheme#seti#palette = lightline#colorscheme#flatten(s:p)
+let g:lightline.colorscheme = 'seti'
