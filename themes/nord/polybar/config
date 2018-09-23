@@ -62,7 +62,7 @@ module-margin-right = 0
 
 font-0 = Terminess Powerline:pixelsize=14;1
 font-1 = fontawesome:pixelsize=9;0
-font-2 = Hack Nerd Font:pixelsize=14;2
+font-2 = Hack Nerd Font:pixelsize=10;0
 
 modules-left = powermenu bspwm xwindow
 modules-center =
@@ -137,11 +137,9 @@ label-monitor = %name%
 
 ws-icon-0 = code;
 ws-icon-1 = ssh;
-ws-icon-2 = email;
-ws-icon-3 = im;
-ws-icon-4 = web;
-ws-icon-5 = music;
-ws-icon-default =
+ws-icon-2 = web;
+ws-icon-3 = music;
+ws-icon-default = 
 
 [module/mpd]
 type = internal/mpd
