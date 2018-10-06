@@ -1,0 +1,33 @@
+rofi.font:                Hack Nerd Font 12
+rofi.color-enabled:       true
+!                         #bg-even #fg      #bg-odd  #bg-focus, #fg-focus
+rofi.color-normal:        #191119, #e5e9f0, #191119, #191119,   #7c5175
+rofi.color-urgent:        #bf616a, #191119, #bf616a, #bf616a,   #191119
+rofi.color-active:        #7c5175, #191119, #bf616a, #7c5175,   #191119
+!                         #bg      #border  #separator
+rofi.color-window:        #191119, #7c5175, #191119
+rofi.display-run:         run
+rofi.display-ssh:         ssh
+rofi.width:               30
+rofi.display-window:      window
+rofi.bw:                  1
+rofi.padding:             15
+rofi.terminal:            termite
+rofi.ssh-command:         {terminal} -e "{ssh-client} {host}"
+rofi.separator-style:     solid
+rofi.sidebar-mode:        true
+rofi.line-margin:         10
+rofi.fullscreen:          false
+rofi.fake-transparency:   true
+rofi.kb-remove-char-back: BackSpace
+rofi.kb-remove-to-eol:    Control+Delete
+rofi.kb-accept-entry:     Return
+rofi.kb-mode-next:        Shift+Right,Control+l
+rofi.kb-mode-previous:    Shift+Left,Control+h
+rofi.kb-row-up:           Up,Control+k
+rofi.kb-row-down:         Down,Control+j
+rofi.location:            2
+rofi.yoffset:             60
+rofi.fixed-num-lines:     true
+rofi.lines:               5
+rofi.hide-scrollbar:      true
