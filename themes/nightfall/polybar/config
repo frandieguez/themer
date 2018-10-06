@@ -1,12 +1,12 @@
 [colors]
 background = #d5d5d6
 foreground = #B4ADA9
-active = #d5d5d5
-black = #181f23
-alert = #7C5175
-focus = #17bebb
-blue = #356085
-yellow = #fed02e
+active     = #d5d5d5
+black      = #181f23
+alert      = #7C5175
+focus      = #17bebb
+blue       = #356085
+yellow     = #fed02e
 
 [modules/xmenu]
 menu-0 = item 1;command
