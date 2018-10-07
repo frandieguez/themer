@@ -155,10 +155,6 @@ function updatePolybar() {
         return
     fi
 
-    export MONITOR=`cat /tmp/monitor`
-    export AC=`ls /sys/class/power_supply | grep AC`
-    export WLAN=`ifconfig | grep wlp | cut -d ':' -f1`
-
     echo -en "  Changing polybar theme..."
 
     cp $DIR/themes/$1/polybar/config $HOME/.config/polybar/config
@@ -251,7 +247,7 @@ function updateTmux() {
 # @param $1 The theme name.
 # ---
 function updateVim() {
-    if [[ ! -x `command -v vim` ]]; then
+    if [[ ! -x `command -v vim` ]] && [[ ! -x `command -v nvim` ]]; then
         return
     fi
 
