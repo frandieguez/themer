@@ -21,7 +21,7 @@ menu-1-1 = sub-item 2.2;command
 
 [bar/top]
 height = 24
-monitor = ${env:MONITOR}
+monitor = ${env:PRIMARY}
 width = 100%
 ;offset-x = 1%
 ;offset-y = 1%

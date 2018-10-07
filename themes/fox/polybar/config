@@ -21,7 +21,7 @@ height = 24
 background =
 bottom = true
 fixed-center = true
-monitor = ${env:MONITOR}
+monitor = ${env:PRIMARY}
 padding-left = 0
 padding-right = 0
 width = 100%
@@ -48,7 +48,7 @@ tray-transparent = false
 
 [bar/top]
 height = 24
-monitor = ${env:MONITOR}
+monitor = ${env:PRIMARY}
 width = 100%
 ;offset-x = 1%
 ;offset-y = 1%
