@@ -89,8 +89,8 @@ call <SID>set_hi("TabLineSel",                   s:none,       s:none,       "NO
 
 " File Navigation/Searching
 call <SID>set_hi("Directory",                    s:color4,     s:none,       "NONE")
-call <SID>set_hi("IncSearch",                    s:color15,    s:color7,     "NONE")
-call <SID>set_hi("Search",                       s:color3,     s:color6,     "NONE")
+call <SID>set_hi("IncSearch",                    s:color8,     s:color6,     "NONE")
+call <SID>set_hi("Search",                       s:color8,     s:color6,     "NONE")
 
 " Completion menu
 call <SID>set_hi("Pmenu",                        s:none,       s:color0,     "NONE")
