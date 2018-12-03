@@ -241,6 +241,7 @@ format-connected-foreground = ${colors.blue}
 label-connected = %essid%
 
 format-disconnected = disconnected
+format-disconnected-foreground = ${colors.alert}
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
 format-disconnected-padding = 1
