@@ -27,9 +27,8 @@ padding-left = 0
 padding-right = 0
 width = 100%
 
-font-0 = fixed:pixelsize=10;2
-font-1 = fontawesome:pixelsize=12;3
-font-2 = DroidSansMono Nerd Font Mono:pixelsize=18;3
+font-0 = MesloLGSDZ Nerd Font:pixelsize=10;0
+font-1 = fixed:pixelsize=10;2
 
 wm-restack = bspwm
 scroll-up = bspwm-desknext
@@ -39,7 +38,7 @@ module-margin-left = 0
 module-margin-right = 0
 
 modules-left = bspwm
-modules-center = p-b-r p-b p-b-l
+modules-center =
 modules-right = xwindow powermenu
 
 tray-position = center
@@ -68,13 +67,12 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = fixed:pixelsize=10;2
-font-1 = fontawesome:pixelsize=12;3
-font-2 = DroidSansMono Nerd Font Mono:pixelsize=18;3
+font-0 = MesloLGSDZ Nerd Font:pixelsize=10;3
+font-1 = fixed:pixelsize=10;2
 
-modules-left = memory separator cpu separator temperature
-modules-center = separator date separator
-modules-right = wlan separator volume separator battery
+modules-left   = mpd
+modules-center =
+modules-right  = memory separator cpu separator temperature separator wlan separator volume separator date battery
 
 wm-restack = bspwm
 
@@ -87,9 +85,8 @@ scroll-down = bspwm-deskprev
 type = internal/xwindow
 label = %title:0:30:...%
 format-foreground = ${colors.alert}
-format-suffix = •
-format-suffix-foreground = ${colors.foreground}
-format-suffix-margin = 2
+format-suffix = " • "
+format-suffix-foreground = ${colors.blue}
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -121,19 +118,19 @@ label-normal = %icon% %index%
 
 label-focused = %icon% %index%
 label-focused-foreground = ${colors.blue}
-label-focused-padding = 2
+label-focused-padding = 1
 
 label-occupied = %icon% %index%
 label-occupied-foreground = ${colors.alert}
-label-occupied-padding = 2
+label-occupied-padding = 1
 
 label-urgent = %icon% %index%
 label-urgent-foreground = ${colors.alert}
-label-urgent-padding = 2
+label-urgent-padding = 1
 
 label-empty = %icon% %index%
 label-empty-foreground = ${colors.alert}
-label-empty-padding = 2
+label-empty-padding = 1
 
 label-monitor = %name%
 
@@ -159,21 +156,52 @@ content-foreground = ${colors.foreground}
 
 [module/separator]
 type = custom/text
-content = "  •  "
-content-foreground = ${colors.foreground}
+content = " • "
+content-foreground = ${colors.alert}
 
 [module/mpd]
 type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
 
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
+format-offline            = <label-offline>
+format-offline-foreground = ${colors.blue}
+format-offline-margin     = 1
+label-offline             = ﱙ mpd is offline
 
-label-song-maxlen = 25
-label-song-ellipsis = true
+format-online             = "<icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next> <bar-progress> <label-time> <label-song>"
+format-online-foreground  = ${colors.blue}
+format-online-margin      = 1
+format-online-spacing     = 1
+
+label-song            = "  %artist% - %title%"
+label-song-ellipsis   = true
+label-song-foreground = ${colors.blue}
+label-song-maxlen     = 25
+label-song-prefix     = •
+label-time-foreground = ${colors.alert}
+
+icon-prev      = 
+icon-stop      = 
+icon-play      = 
+icon-pause     = 
+icon-next      = 
+icon-seekb     = 
+icon-seekf     = 
+icon-random    = 
+icon-repeat    = 凌
+icon-repeatone = 綾
+icon-single    = 綾
+icon-consume   = 
+
+toggle-on-foreground  = #ff
+toggle-off-foreground = #55
+
+bar-progress-empty = ─
+bar-progress-empty-foreground = ${colors.blue}
+bar-progress-fill = ─
+bar-progress-fill-foreground = ${colors.alert}
+bar-progress-indicator = ╼
+bar-progress-indicator-foreground = ${colors.alert}
+bar-progress-width = 15
 
 [module/xbacklight]
 type = internal/xbacklight
@@ -217,7 +245,7 @@ format-foreground = ${colors.blue}
 format-warn = <label-warn>
 format-warn-foreground = ${colors.alert}
 
-label = TMP: %temperature%
+label = TMP: %temperature-c%
 label-transparent = true
 
 label-warn = TMP: %temperature%
@@ -253,14 +281,14 @@ type = internal/date
 interval = 1
 
 date =
-date-alt = "%Y-%m-%d"
+date-alt = "%Y-%m-%d "
 time = "%H:%M"
 time-alt = "%H:%M:%S"
-label = %date% %time%
+label = "%date%%time%"
 label-foreground = ${colors.blue}
 
 [module/volume]
-type = internal/volume
+type = internal/alsa
 
 format-volume = <ramp-volume> <label-volume>
 format-volume-foreground = ${colors.blue}
@@ -294,23 +322,42 @@ battery = BAT0
 adapter = ${env:POWER}
 full-at = 98
 
-format-charging = " <label-charging>"
+format-charging = "<animation-charging> <label-charging>"
 format-charging-foreground = ${colors.yellow}
+format-charging-prefix = " • "
+format-charging-prefix-foreground = ${colors.alert}
 label-charging-margin-right = 1
 
 format-full = "<ramp-capacity> <label-full>"
 format-full-foreground = ${colors.blue}
+format-full-prefix = " • "
+format-full-prefix-foreground = ${colors.alert}
 label-full-margin-right = 1
 
 format-discharging = "<ramp-capacity> <label-discharging>"
 format-discharging-foreground = ${colors.alert}
+format-discharging-prefix = " • "
+format-dischargin-prefix-foreground = ${colors.alert}
 label-discharging-margin-right = 1
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-5 = 
+ramp-capacity-6 = 
+ramp-capacity-7 = 
+ramp-capacity-8 = 
+ramp-capacity-9 = 
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-5 = 
+animation-charging-6 = 
 
 [module/powermenu]
 type = custom/menu
@@ -321,28 +368,29 @@ label-open-padding-right = 2
 
 label-close = 
 label-close-foreground = ${colors.alert}
-label-close-padding-right = 2
+label-close-padding-right = 1
 
 label-separator = •
-label-separator-foreground = ${colors.foreground}
+label-separator-foreground = ${colors.blue}
 
 ; Lock
 menu-0-0 = 
 menu-0-0-exec = slimlock
 menu-0-0-foreground = ${colors.alert}
-menu-0-0-padding = 2
+menu-0-0-padding = 1
 
 ; Reboot
 menu-0-1 = 
 menu-0-1-exec = reboot
 menu-0-1-foreground = ${colors.alert}
-menu-0-1-padding = 2
+menu-0-1-padding = 1
 
 ; Poweroff
 menu-0-2 = 
 menu-0-2-exec = shutdown -P now
 menu-0-2-foreground = ${colors.alert}
-menu-0-2-padding = 2
+menu-0-2-padding-left = 1
+menu-0-2-padding-right = 2
 
 [settings]
 screenchange-reload = true
