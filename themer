@@ -175,14 +175,14 @@ function updatePolybar() {
 
     # Fix top padding for primary monitor
     if [ $(grep "bar/top" ~/.config/polybar/config) ]; then
-        height=$(grep "bar/top" ~/.config/polybar/config -A 1 | \
+        height=$(grep "bar/top" ~/.config/polybar/config -A 3 | \
             grep "height" | sed -e "s/height\s*=\s*//g")
         bspc config -m $PRIMARY top_padding $height
     fi
 
     # Fix bottom padding for primary monitor
     if [ $(grep "bar/bottom" ~/.config/polybar/config) ]; then
-        height=$(grep "bar/bottom" ~/.config/polybar/config -A 1 | \
+        height=$(grep "bar/bottom" ~/.config/polybar/config -A 3 | \
             grep "height" | sed -e "s/height\s*=\s*//g")
         bspc config -m $PRIMARY bottom_padding $height
     fi

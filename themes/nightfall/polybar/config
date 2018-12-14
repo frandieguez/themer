@@ -1,50 +1,45 @@
+; vim:ft=dosini
+
+[global/wm]
+margin-top = 0
+;margin-bottom = 0
+
+[settings]
+screenchange-reload = true
+
 [colors]
 background = #d5d5d6
 foreground = #B4ADA9
-active     = #d5d5d5
-black      = #181f23
-alert      = #7C5175
-focus      = #17bebb
-blue       = #356085
-yellow     = #fed02e
-
-[modules/xmenu]
-menu-0 = item 1;command
-menu-0-0 = sub-item 1.1;command
-menu-0-1 = sub-item 1.2;command
-menu-0-2 = sub-item 1.3;command
-menu-1 = item 2;command
-menu-1-0 = sub-item 2.1;command
-menu-1-1 = sub-item 2.2;command
+danger     = #7C5175
+success    = #17bebb
+info       = #356085
+warning    = #fed02e
 
 [bar/bottom]
-height = 24
-bottom = true
-background =
+bottom       = true
 fixed-center = true
-monitor = ${env:PRIMARY}
-padding-left = 0
-padding-right = 0
-width = 100%
+height       = 24
+monitor      = ${env:PRIMARY}
+scroll-down  = bspwm-deskprev
+scroll-up    = bspwm-desknext
+width        = 100%
+wm-restack   = bspwm
 
-font-0 = MesloLGSDZ Nerd Font:pixelsize=10;0
-font-1 = fixed:pixelsize=10;2
-
-wm-restack = bspwm
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
-
-module-margin-left = 0
-module-margin-right = 0
-
-modules-left = bspwm
-modules-center =
-modules-right = xwindow powermenu
-
+background =
 tray-position = center
 tray-background = #aa000000
 tray-padding = 5
 tray-transparent = true
+
+padding-left  = 0
+padding-right = 0
+
+font-0 = MesloLGSDZ Nerd Font:pixelsize=10;0
+font-1 = fixed:pixelsize=10;2
+
+modules-left   = bspwm
+modules-center =
+modules-right  = xwindow powermenu
 
 [bar/top]
 height = 24
@@ -63,6 +58,7 @@ border-color = #00000000
 
 padding-left = 0
 padding-right = 0
+margin-bottom = 0
 
 module-margin-left = 0
 module-margin-right = 0
@@ -72,7 +68,7 @@ font-1 = fixed:pixelsize=10;2
 
 modules-left   = mpd
 modules-center =
-modules-right  = memory separator cpu separator temperature separator wlan separator volume separator date battery
+modules-right  = memory separator cpu separator temperature separator wired-network wlan separator volume separator date battery
 
 wm-restack = bspwm
 
@@ -81,24 +77,38 @@ wm-restack = bspwm
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
 
+[module/coretemp]
+type = custom/script
+exec = $HOME/.config/zsh/scripts/temperature.sh
+interval = 3
+format-foreground = ${colors.blue}
+
+[module/wired-network]
+type = internal/network
+interface = ${env:ETH}
+
+label-connected            = ? %upspeed% ? %downspeed%
+label-connected-foreground = ${colors.blue}
+
+label-disconnected            = disconnected
+label-disconnected-foreground = ${colors.alert}
+
 [module/xwindow]
-type = internal/xwindow
-label = %title:0:30:...%
-format-foreground = ${colors.alert}
-format-suffix = " • "
-format-suffix-foreground = ${colors.blue}
+type                     = internal/xwindow
+format-foreground        = ${colors.danger}
+format-suffix            = " • "
+format-suffix-foreground = ${colors.info}
+label                    = %title:0:30:...%
 
 [module/xkeyboard]
 type = internal/xkeyboard
-blacklist-0 = num lock
 
-format-foreground = ${colors.foreground}
-format-prefix = " "
-
-label-layout = %layout%
-
+blacklist-0             = num lock
+format-foreground       = ${colors.foreground}
+format-prefix           = " "
 label-indicator-padding = 2
-label-indicator-margin = 1
+label-indicator-margin  = 1
+label-layout            = %layout%
 
 [module/filesystem]
 type = internal/fs
@@ -111,73 +121,57 @@ label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/bspwm]
-type = internal/bspwm
+type           = internal/bspwm
 pin-workspaces = false
 
-label-normal = %icon% %index%
+label-empty               = %icon% %index%
+label-empty-foreground    = ${colors.danger}
+label-empty-padding       = 1
 
-label-focused = %icon% %index%
-label-focused-foreground = ${colors.blue}
-label-focused-padding = 1
+label-focused             = %icon% %index%
+label-focused-foreground  = ${colors.info}
+label-focused-padding     = 1
 
-label-occupied = %icon% %index%
-label-occupied-foreground = ${colors.alert}
-label-occupied-padding = 1
+label-normal              = %icon% %index%
 
-label-urgent = %icon% %index%
-label-urgent-foreground = ${colors.alert}
-label-urgent-padding = 1
+label-occupied            = %icon% %index%
+label-occupied-foreground = ${colors.danger}
+label-occupied-padding    = 1
 
-label-empty = %icon% %index%
-label-empty-foreground = ${colors.alert}
-label-empty-padding = 1
+label-urgent              = %icon% %index%
+label-urgent-foreground   = ${colors.danger}
+label-urgent-padding      = 1
 
-label-monitor = %name%
-
-ws-icon-0 = code;
-ws-icon-1 = ssh;
-ws-icon-2 = web;
-ws-icon-3 = music;
+ws-icon-0       = code;
+ws-icon-1       = ssh;
+ws-icon-2       = web;
+ws-icon-3       = music;
 ws-icon-default = 
-
-[module/p-b]
-type = custom/text
-content = "                     "
-
-[module/p-b-l]
-type = custom/text
-content = •
-content-foreground = ${colors.foreground}
-
-[module/p-b-r]
-type = custom/text
-content = •
-content-foreground = ${colors.foreground}
 
 [module/separator]
 type = custom/text
 content = " • "
-content-foreground = ${colors.alert}
+content-foreground = ${colors.danger}
 
 [module/mpd]
 type = internal/mpd
 
 format-offline            = <label-offline>
-format-offline-foreground = ${colors.blue}
+format-offline-foreground = ${colors.info}
 format-offline-margin     = 1
 label-offline             = ﱙ mpd is offline
 
 format-online             = "<icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next> <bar-progress> <label-time> <label-song>"
-format-online-foreground  = ${colors.blue}
+format-online-foreground  = ${colors.info}
 format-online-margin      = 1
 format-online-spacing     = 1
 
 label-song            = "  %artist% - %title%"
 label-song-ellipsis   = true
-label-song-foreground = ${colors.blue}
+label-song-foreground = ${colors.info}
 label-song-maxlen     = 25
 label-song-prefix     = •
-label-time-foreground = ${colors.alert}
+label-time-foreground = ${colors.danger}
 
 icon-prev      = 
 icon-stop      = 
@@ -196,11 +190,11 @@ toggle-on-foreground  = #ff
 toggle-off-foreground = #55
 
 bar-progress-empty = ─
-bar-progress-empty-foreground = ${colors.blue}
+bar-progress-empty-foreground = ${colors.info}
 bar-progress-fill = ─
-bar-progress-fill-foreground = ${colors.alert}
+bar-progress-fill-foreground = ${colors.danger}
 bar-progress-indicator = ╼
-bar-progress-indicator-foreground = ${colors.alert}
+bar-progress-indicator-foreground = ${colors.danger}
 bar-progress-width = 15
 
 [module/xbacklight]
@@ -227,12 +221,12 @@ type = internal/memory
 interval = 2
 label = "RAM: %percentage_used%%"
 label-margin-left = 1
-label-foreground = ${colors.blue}
+label-foreground = ${colors.info}
 
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-foreground = ${colors.blue}
+format-foreground = ${colors.info}
 label = CPU: %percentage%%
 
 [module/temperature]
@@ -241,14 +235,14 @@ thermal-zone = 0
 warn-temperature = 80
 
 format = <label>
-format-foreground = ${colors.blue}
+format-foreground = ${colors.info}
 format-warn = <label-warn>
-format-warn-foreground = ${colors.alert}
+format-warn-foreground = ${colors.danger}
 
 label = TMP: %temperature-c%
 label-transparent = true
 
-label-warn = TMP: %temperature%
+label-warn = TMP: %temperature-c%
 
 ramp-padding-left = 2
 
@@ -265,11 +259,11 @@ interface = ${env:WLAN}
 interval = 3.0
 
 format-connected =  <label-connected>
-format-connected-foreground = ${colors.blue}
+format-connected-foreground = ${colors.info}
 label-connected = %essid%
 
 format-disconnected = disconnected
-format-disconnected-foreground = ${colors.alert}
+format-disconnected-foreground = ${colors.danger}
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
 format-disconnected-padding = 1
@@ -285,16 +279,17 @@ date-alt = "%Y-%m-%d "
 time = "%H:%M"
 time-alt = "%H:%M:%S"
 label = "%date%%time%"
-label-foreground = ${colors.blue}
+label-foreground = ${colors.info}
+label-margin-right = 1
 
 [module/volume]
 type = internal/alsa
 
 format-volume = <ramp-volume> <label-volume>
-format-volume-foreground = ${colors.blue}
+format-volume-foreground = ${colors.info}
 label-volume = "%percentage%%"
 
-format-muted-foreground = ${colors.alert}
+format-muted-foreground = ${colors.danger}
 label-muted = " muted"
 
 ramp-volume-0 = ""
@@ -323,21 +318,21 @@ adapter = ${env:POWER}
 full-at = 98
 
 format-charging = "<animation-charging> <label-charging>"
-format-charging-foreground = ${colors.yellow}
-format-charging-prefix = " • "
-format-charging-prefix-foreground = ${colors.alert}
+format-charging-foreground = ${colors.warning}
+format-charging-prefix = "• "
+format-charging-prefix-foreground = ${colors.danger}
 label-charging-margin-right = 1
 
 format-full = "<ramp-capacity> <label-full>"
-format-full-foreground = ${colors.blue}
-format-full-prefix = " • "
-format-full-prefix-foreground = ${colors.alert}
+format-full-foreground = ${colors.info}
+format-full-prefix = "• "
+format-full-prefix-foreground = ${colors.danger}
 label-full-margin-right = 1
 
 format-discharging = "<ramp-capacity> <label-discharging>"
-format-discharging-foreground = ${colors.alert}
-format-discharging-prefix = " • "
-format-dischargin-prefix-foreground = ${colors.alert}
+format-discharging-foreground = ${colors.danger}
+format-discharging-prefix = "• "
+format-dischargin-prefix-foreground = ${colors.danger}
 label-discharging-margin-right = 1
 
 ramp-capacity-0 = 
@@ -363,44 +358,31 @@ animation-charging-6 = 
 type = custom/menu
 
 label-open = 
-label-open-foreground = ${colors.alert}
+label-open-foreground = ${colors.danger}
 label-open-padding-right = 2
 
 label-close = 
-label-close-foreground = ${colors.alert}
+label-close-foreground = ${colors.danger}
 label-close-padding-right = 1
 
 label-separator = •
-label-separator-foreground = ${colors.blue}
+label-separator-foreground = ${colors.info}
 
 ; Lock
 menu-0-0 = 
 menu-0-0-exec = slimlock
-menu-0-0-foreground = ${colors.alert}
+menu-0-0-foreground = ${colors.danger}
 menu-0-0-padding = 1
 
 ; Reboot
 menu-0-1 = 
 menu-0-1-exec = reboot
-menu-0-1-foreground = ${colors.alert}
+menu-0-1-foreground = ${colors.danger}
 menu-0-1-padding = 1
 
 ; Poweroff
 menu-0-2 = 
 menu-0-2-exec = shutdown -P now
-menu-0-2-foreground = ${colors.alert}
+menu-0-2-foreground = ${colors.danger}
 menu-0-2-padding-left = 1
 menu-0-2-padding-right = 2
-
-[settings]
-screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-
-[global/wm]
-margin-top = 0
-;margin-bottom = 0
-
-; vim:ft=dosini

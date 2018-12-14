@@ -1,80 +1,61 @@
+; vim:ft=dosini
+
+[settings]
+screenchange-reload = true
+
 [colors]
 background = #23323e
 foreground = #446980
-alert = #e15151
-blue = #446980
-cyan = #24bae2
-
-[modules/xmenu]
-menu-0 = item 1;command
-menu-0-0 = sub-item 1.1;command
-menu-0-1 = sub-item 1.2;command
-menu-0-2 = sub-item 1.3;command
-menu-1 = item 2;command
-menu-1-0 = sub-item 2.1;command
-menu-1-1 = sub-item 2.2;command
+danger     = #e15151
+info       = #446980
+success    = #24bae2
+warning    = #fed02e
 
 [bar/top]
-height = 27
-monitor = ${env:PRIMARY}
-width = 100%
-;offset-x = 1%
-;offset-y = 1%
-;radius = 6.0
-fixed-center = false
+fixed-center     = false
+height           = 27
+monitor          = ${env:PRIMARY}
+scroll-down      = bspwm-deskprev
+scroll-up        = bspwm-desknext
+width            = 100%
+wm-restack       = bspwm
 
-background = ${colors.background}
-foreground = ${colors.foreground}
+tray transparent = false
+tray-background  = ${colors.background}
+tray-padding     = 5
+tray-position    = right
 
-line-size = 3
-line-color = #f00
+background    = ${colors.background}
+border-color  = #00000000
+foreground    = ${colors.foreground}
+line-color    = #f00
+line-size     = 3
 
-;border-size = 4
-border-color = #00000000
-
-padding-left = 0
-padding-right = 0
-
-module-margin-left = 2
-module-margin-right = 0
-
-font-0 = fixed:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-0 = fixed:pixelsize=10;2
+font-1 = MesloLGSDZ Nerd Font:pixelsize=10;0
+;font-1 = fixed:pixelsize=10;2
 font-2 = siji:pixelsize=10;1
 font-3 = fontawesome:pixelsize=10;1
 
-modules-left = powermenu bspwm xwindow
-modules-center =
-modules-right = xbacklight xkeyboard memory cpu temperature wlan eth date volume battery
-
-tray-position = right
-tray-padding = 5
-tray transparent = false
-tray-background = ${colors.background}
-
-wm-restack = bspwm
-
-;override-redirect = true
-
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
+modules-left       = powermenu bspwm xwindow
+modules-center     =
+modules-right      = xbacklight xkeyboard memory cpu temperature wlan eth date volume battery
+module-margin-left = 2
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30:...%
-label-foreground = ${colors.cyan}
+label            = %title:0:30:...%
+label-foreground = ${colors.success}
 
 [module/xkeyboard]
 type = internal/xkeyboard
-blacklist-0 = num lock
 
-format-foreground = ${colors.blue}
-format-prefix = " "
-
-label-layout = %layout%
-
+blacklist-0             = num lock
+format-foreground       = ${colors.info}
+format-prefix           = " "
+label-layout            = %layout%
 label-indicator-padding = 2
-label-indicator-margin = 1
+label-indicator-margin  = 1
 
 [module/filesystem]
 type = internal/fs
@@ -87,36 +68,32 @@ label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/bspwm]
-type = internal/bspwm
+type           = internal/bspwm
 pin-workspaces = false
 
-label-normal = %icon%
+label-empty               = %icon%
+label-empty-foreground    = ${colors.info}
+label-empty-padding       = 2
 
-label-focused = %icon%
-label-focused-foreground = ${colors.cyan}
-label-focused-padding = 2
+label-focused             = %icon%
+label-focused-foreground  = ${colors.success}
+label-focused-padding     = 2
 
-label-occupied = %icon%
-label-occupied-foreground = ${colors.blue}
-label-occupied-padding = 2
+label-normal              = %icon%
 
-label-urgent = %icon%
-label-urgent-foreground = ${colors.alert}
-label-urgent-padding = 2
+label-occupied            = %icon%
+label-occupied-foreground = ${colors.info}
+label-occupied-padding    = 2
 
-label-empty = %icon%
-label-empty-foreground = ${colors.blue}
-label-empty-padding = 2
+label-urgent              = %icon%
+label-urgent-foreground   = ${colors.danger}
+label-urgent-padding      = 2
 
-label-monitor = %name%
-
-ws-icon-0 = code;
-ws-icon-1 = ssh;
-ws-icon-2 = email;
-ws-icon-3 = im;
-ws-icon-4 = web;
-ws-icon-5 = music;
-ws-icon-default =
+ws-icon-0       = code;
+ws-icon-1       = ssh;
+ws-icon-2       = web;
+ws-icon-3       = music;
+ws-icon-default = 
 
 [module/mpd]
 type = internal/mpd
@@ -157,19 +134,19 @@ card = intel_backlight
 type = internal/cpu
 interval = 2
 format-prefix = " "
-format-prefix-foreground = ${colors.blue}
+format-prefix-foreground = ${colors.info}
 format-prefix-padding-left = 1
 label = %percentage%%
-label-foreground = ${colors.blue}
+label-foreground = ${colors.info}
 
 [module/memory]
 type = internal/memory
 interval = 2
 format-prefix = " "
-format-prefix-foreground = ${colors.blue}
+format-prefix-foreground = ${colors.info}
 format-prefix-padding-left = 1
 label = %percentage_used%%
-label-foreground = ${colors.blue}
+label-foreground = ${colors.info}
 
 [module/wlan]
 type = internal/network
@@ -177,9 +154,9 @@ interface = ${env:WLAN}
 interval = 3.0
 
 format-connected =  <ramp-signal><label-connected>
-format-connected-foreground = ${colors.blue}
+format-connected-foreground = ${colors.info}
 label-connected = %essid%
-label-connected-foreground = ${colors.blue}
+label-connected-foreground = ${colors.info}
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
@@ -223,10 +200,10 @@ time-alt = %H:%M:%S
 
 ;format-prefix = 
 format-prefix = 
-format-prefix-foreground = ${colors.blue}
+format-prefix-foreground = ${colors.info}
 
 label = %date% %time%
-label-foreground = ${colors.blue}
+label-foreground = ${colors.info}
 format-prefix-padding-left = 1
 label-padding-right = 1
 
@@ -234,11 +211,11 @@ label-padding-right = 1
 type = internal/volume
 
 format-volume = <ramp-volume> <label-volume>
-format-volume-foreground = ${colors.blue}
+format-volume-foreground = ${colors.info}
 label-volume = %percentage%%
 
 format-muted-prefix = " "
-format-muted-foreground = ${colors.cyan}
+format-muted-foreground = ${colors.success}
 label-muted =  muted
 
 ramp-volume-0 = ""
@@ -270,19 +247,19 @@ adapter = ${env:POWER}
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-foreground = ${colors.cyan}
+format-charging-foreground = ${colors.success}
 format-charging-padding = 2
-label-charging-foreground = ${colors.cyan}
+label-charging-foreground = ${colors.success}
 
 format-full-prefix = " "
-format-full-prefix-foreground = ${colors.blue}
+format-full-prefix-foreground = ${colors.info}
 format-full-padding = 2
-label-full-foreground = ${colors.blue}
+label-full-foreground = ${colors.info}
 
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-foreground = ${colors.cyan}
+format-discharging-foreground = ${colors.success}
 format-discharging-padding = 2
-label-discharging-foreground = ${colors.cyan}
+label-discharging-foreground = ${colors.success}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
@@ -295,7 +272,7 @@ animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
-animation-charging-foreground = ${colors.cyan}
+animation-charging-foreground = ${colors.success}
 animation-charging-framerate = 750
 
 [module/temperature]
@@ -306,8 +283,8 @@ label-transparent = true
 
 format = <ramp> <label>
 format-warn = <ramp> <label-warn>
-format-foreground = ${colors.blue}
-format-warn-foreground = ${colors.cyan}
+format-foreground = ${colors.info}
+format-warn-foreground = ${colors.success}
 
 label = %temperature%
 label-padding-right = 1
@@ -328,45 +305,32 @@ format-spacing = 0
 
 label-open =  
 label-open-background = #0000
-label-open-foreground = ${colors.blue}
+label-open-foreground = ${colors.info}
 label-open-padding = 2
 
 label-close = 
 label-close-padding = 2
 label-close-background = #0000
-label-close-foreground = ${colors.cyan}
+label-close-foreground = ${colors.success}
 label-separator = |
 label-separator-background = #0000
-label-separator-foreground = ${colors.blue}
+label-separator-foreground = ${colors.info}
 
 ; Lock
 menu-0-0 = 
 menu-0-0-exec = slimlock
 menu-0-0-padding = 2
 menu-0-0-background = #0000
-menu-0-0-foreground = ${colors.cyan}
+menu-0-0-foreground = ${colors.success}
 ; Reboot
 menu-0-1 = 
 menu-0-1-exec = reboot
 menu-0-1-padding = 2
 menu-0-1-background = #0000
-menu-0-1-foreground = ${colors.cyan}
+menu-0-1-foreground = ${colors.success}
 ; Poweroff
 menu-0-2 = 
 menu-0-2-exec = shutdown -P now
 menu-0-2-padding = 2
 menu-0-2-background = #0000
-menu-0-2-foreground = ${colors.cyan}
-
-[settings]
-screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-
-[global/wm]
-margin-top = 0
-;margin-bottom = 0
-
-; vim:ft=dosini
+menu-0-2-foreground = ${colors.success}
