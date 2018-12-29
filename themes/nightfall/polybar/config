@@ -193,34 +193,34 @@ type = custom/menu
 
 expand-right = false
 
-label-open = 
-label-open-foreground = ${colors.danger}
-label-open-padding-right = 1
+label-open                 = 
+label-open-foreground      = ${colors.danger}
+label-open-padding-right   = 1
 
-label-close = 
-label-close-foreground = ${colors.info}
-label-close-padding = 1
+label-close                = 
+label-close-foreground     = ${colors.info}
+label-close-padding        = 1
 
-label-separator = •
+label-separator            = •
 label-separator-foreground = ${colors.info}
 
 ; Lock
-menu-0-0 = 
-menu-0-0-exec = slimlock
-menu-0-0-foreground = ${colors.danger}
+menu-0-0               = 
+menu-0-0-exec          = slimlock
+menu-0-0-foreground    = ${colors.danger}
 menu-0-0-padding-right = 1
 
 ; Reboot
-menu-0-1 = 
-menu-0-1-exec = reboot
-menu-0-1-foreground = ${colors.danger}
-menu-0-1-padding = 1
+menu-0-1               = 
+menu-0-1-exec          = reboot
+menu-0-1-foreground    = ${colors.danger}
+menu-0-1-padding       = 1
 
 ; Poweroff
-menu-0-2 = 
-menu-0-2-exec = shutdown -P now
-menu-0-2-foreground = ${colors.danger}
-menu-0-2-padding = 1
+menu-0-2               = 
+menu-0-2-exec          = shutdown -P now
+menu-0-2-foreground    = ${colors.danger}
+menu-0-2-padding       = 1
 
 [module/separator]
 type = custom/text
@@ -229,22 +229,29 @@ content            = " • "
 content-foreground = ${colors.danger}
 
 [module/temperature]
-type = custom/script
+type = internal/temperature
 
-exec     = $HOME/.config/zsh/scripts/temperature.sh
-interval = 3
+hwmon-path       = ${env:TMP}
+thermal-zone     = 0
+warn-temperature = 60
 
-format-foreground = ${colors.info}
+format                 = TMP: <label>
+format-foreground      = ${colors.info}
+label                  = %temperature:2%
+
+format-warn            = TMP: <label-warn>
+format-warn-foreground = ${colors.danger}
+label-warn             = %temperature:2%
 
 [module/volume]
 type = internal/alsa
 
-format-volume = <ramp-volume> <label-volume>
+format-volume            = <ramp-volume> <label-volume>
 format-volume-foreground = ${colors.info}
-label-volume = "%percentage%%"
+label-volume             = "%percentage%%"
 
-format-muted-foreground = ${colors.danger}
-label-muted = "ﱝ %percentage%%"
+format-muted-foreground  = ${colors.danger}
+label-muted              = "ﱝ %percentage%%"
 
 ramp-volume-0 = 
 ramp-volume-1 = 
