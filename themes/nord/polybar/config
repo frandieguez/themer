@@ -1,113 +1,88 @@
+; vim:ft=dosini
+[settings]
+screenchange-reload = true
+
 [colors]
 foreground = #D8DEE9
 background = #2E3440
-
-color0  = #3B4252
-color1  = #BF616A
-color2  = #A3BE8C
-color3  = #EBCB8B
-color4  = #81A1C1
-color5  = #B48EAD
-color6  = #88C0D0
-color7  = #E5E9F0
-color8  = #4C566A
-color9  = #BF616A
-color10 = #A3BE8C
-color11 = #EBCB8B
-color12 = #81A1C1
-color13 = #B48EAD
-color14 = #8FBCBB
-color15 = #ECEFF4
-
-active     = #dbdcdd
-black      = #181f23
-blue       = #4164a3
-magenta    = #8a4398
-cyan       = #5ee5fb
-green      = #70a058
-yellow     = #efe169
-
-[modules/xmenu]
-menu-0 = item 1;command
-menu-0-0 = sub-item 1.1;command
-menu-0-1 = sub-item 1.2;command
-menu-0-2 = sub-item 1.3;command
-menu-1 = item 2;command
-menu-1-0 = sub-item 2.1;command
-menu-1-1 = sub-item 2.2;command
+color0     = #3B4252
+color1     = #BF616A
+color2     = #A3BE8C
+color3     = #EBCB8B
+color4     = #81A1C1
+color5     = #B48EAD
+color6     = #88C0D0
+color7     = #E5E9F0
 
 [bar/top]
-height = 30
-monitor = ${env:PRIMARY}
-width = 100%
-bottom = false
-;offset-x = 1%
-;offset-y = 1%
-;radius = 6.0
-fixed-center = false
+fixed-center = true
+height       = 30
+monitor      = ${env:PRIMARY}
+scroll-down  = bspwm-deskprev
+scroll-up    = bspwm-desknext
+width        = 100%
+wm-restack   = bspwm
 
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 1
-
-border-bottom-size = 0
+background          = ${colors.background}
 border-bottom-color = ${colors.foreground}
-
-padding-left = 0
-padding-right = 0
-
-module-margin-left = 0
-module-margin-right = 0
-
-font-0 = Terminess Powerline:pixelsize=14;1
-font-1 = fontawesome:pixelsize=9;0
-font-2 = Hack Nerd Font:pixelsize=10;0
-
-modules-left = powermenu bspwm xwindow
-modules-center =
-modules-right = xbacklight memory cpu temperature wlan eth volume time date battery
+border-bottom-size  = 0
+foreground          = ${colors.foreground}
+line-size           = 2
+padding-left        = 0
+padding-right       = 0
 
 tray-position = center
 tray-padding = 5
 tray transparent = false
 tray-background = ${colors.background}
 
-wm-restack = bspwm
+font-0 = Hack Nerd Font:pixelsize=10;2
 
-;override-redirect = true
+modules-left   = powermenu bspwm xwindow
+modules-center =
+modules-right  = lan wlan memory cpu temperature volume time date battery
 
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
+[module/battery]
+type = internal/battery
 
-[module/xwindow]
-type = internal/xwindow
-label = %title:0:30:...%
-format-padding = 1
-format-prefix =
-format-foreground = ${colors.color2}
-format-background = ${colors.color0}
-format-underline = ${colors.color2}
+battery = BAT0
+adapter = ${env:POWER}
+full-at = 98
 
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
+format-charging               = " <label-charging>"
+format-charging-foreground    = ${colors.color3}
+format-charging-padding       = 1
+format-charging-underline     = ${colors.color3}
 
-format-foreground = ${colors.foreground}
-format-prefix = " "
+format-full                   = "<ramp-capacity> <label-full>"
+format-full-foreground        = ${colors.color2}
+format-full-padding           = 1
+format-full-underline         = ${colors.color2}
 
-label-layout = %layout%
+format-discharging            = "<ramp-capacity> <label-discharging>"
+format-discharging-foreground = ${colors.color1}
+format-discharging-padding    = 1
+format-discharging-underline  = ${colors.color1}
+label-discharging-foreground  = ${colors.color1}
 
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-5 = 
+ramp-capacity-6 = 
+ramp-capacity-7 = 
+ramp-capacity-8 = 
+ramp-capacity-9 = 
 
-[module/filesystem]
-type = internal/fs
-interval = 25
-
-mount-0 = /
-
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
-label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-5 = 
+animation-charging-6 = 
 
 [module/bspwm]
 type = internal/bspwm
@@ -115,63 +90,25 @@ pin-workspaces = false
 format-background = ${colors.background}
 format-foreground = ${colors.color4}
 
-label-normal = %icon%
-
-label-focused = %icon%
-label-focused-padding = 1
-label-focused-underline = ${colors.color4}
-
-label-occupied = %icon%
-label-occupied-padding = 1
+label-empty              = %icon%
+label-empty-padding      = 1
+label-empty-underline    = ${colors.background}
+label-focused            = %icon%
+label-focused-padding    = 1
+label-focused-underline  = ${colors.color4}
+label-normal             = %icon%
+label-occupied           = %icon%
+label-occupied-padding   = 1
 label-occupied-underline = ${colors.background}
+label-urgent             = %icon%
+label-urgent-padding     = 1
+label-urgent-underline   = ${colors.background}
 
-label-urgent = %icon%
-label-urgent-padding = 1
-label-urgent-underline = ${colors.background}
-
-label-empty = %icon%
-label-empty-padding = 1
-label-empty-underline = ${colors.background}
-
-label-monitor = %name%
-
-ws-icon-0 = code;
-ws-icon-1 = ssh;
-ws-icon-2 = web;
-ws-icon-3 = music;
+ws-icon-0       = code;
+ws-icon-1       = ssh;
+ws-icon-2       = web;
+ws-icon-3       = music;
 ws-icon-default = 
-
-[module/mpd]
-type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
-
-label-song-maxlen = 25
-label-song-ellipsis = true
-
-[module/xbacklight]
-type = internal/xbacklight
-
-format = <label> <bar>
-label = BL
-
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #ff
-bar-fill = ─
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-foreground = ${colors.foreground-alt}
-
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
 
 [module/cpu]
 type     = internal/cpu
@@ -187,75 +124,7 @@ format-warn-padding         = 1
 format-warn-foreground      = ${colors.color1}
 format-warn-underline       = ${colors.color1}
 
-label = %percentage%%
-
-[module/memory]
-type = internal/memory
-interval = 2
-
-format-background           = ${colors.background}
-format-foreground           = ${colors.color7}
-format-padding              = 1
-format-prefix               = 
-format-prefix-padding-right = 1
-format-underline            = ${colors.background}
-
-label = %percentage_used%%
-
-[module/wlan]
-type = internal/network
-interface = ${env:WLAN}
-interval = 3.0
-
-format-connected =  <ramp-signal><label-connected>
-format-connected-foreground = ${colors.foreground}
-label-connected = %essid%
-label-connected-foreground = ${colors.foreground}
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-format-disconnected-padding = 1
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
-
-[module/eth]
-type = internal/network
-interface = net0
-interval = 3.0
-
-format-connected-underline = #55aa55
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
-[module/time]
-type = internal/date
-interval = 1
-
-date     = " %y/%m/%d"
-date-alt = " %y/%m/%d"
-time     = " %H:%M"
-time-alt = " %H:%M"
-
-label            = "%time%"
-label-background = ${colors.background}
-label-foreground = ${colors.color3}
-label-padding    = 1
-label-underline  = ${colors.background}
+label = %percentage:2%%
 
 [module/date]
 type = internal/date
@@ -272,112 +141,37 @@ label-foreground = ${colors.color4}
 label-padding    = 1
 label-underline  = ${colors.background}
 
-[module/volume]
-type = internal/volume
+[module/lan]
+type = internal/network
+interface = ${env:ETH}
 
-format-volume            = <ramp-volume> <label-volume>
-format-volume-foreground = ${colors.color5}
-format-volume-padding    = 1
-format-volume-underline  = ${colors.background}
-label-volume = "%percentage%%"
+label-connected            =  %upspeed:8%  %downspeed:8%
+label-connected-foreground = ${colors.color2}
+label-connected-padding    = 1
 
-format-muted-background = ${colors.color0}
-format-muted-foreground = ${colors.color5}
-format-muted-padding    = 1
-format-muted-underline  = ${colors.color5}
-label-muted = " mute"
+[module/memory]
+type = internal/memory
+interval = 2
 
-ramp-volume-0 = ""
-ramp-volume-1 = ""
-ramp-volume-2 = ""
-ramp-volume-3 = ""
+format-background           = ${colors.background}
+format-foreground           = ${colors.color7}
+format-padding              = 1
+format-prefix               = 
+format-prefix-padding-right = 1
+format-underline            = ${colors.background}
 
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-fill = ─
-bar-volume-empty = ─
-bar-volume-empty-foreground = ${colors.foreground-alt}
-
-[module/battery]
-type = internal/battery
-battery = BAT0
-adapter = ${env:POWER}
-full-at = 98
-
-format-charging            = " <label-charging>"
-format-charging-foreground = ${colors.color3}
-format-charging-padding    = 1
-format-charging-underline  = ${colors.color3}
-
-format-full            = "<ramp-capacity> <label-full>"
-format-full-foreground = ${colors.color2}
-format-full-padding    = 1
-format-full-underline  = ${colors.color2}
-
-format-discharging            = "<ramp-capacity> <label-discharging>"
-format-discharging-foreground = ${colors.color1}
-format-discharging-padding    = 1
-format-discharging-underline  = ${colors.color1}
-label-discharging-foreground = ${colors.color1}
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
-animation-charging-framerate = 1000
-
-[module/temperature]
-type = internal/temperature
-thermal-zone = 0
-warn-temperature = 60
-label-transparent = true
-
-format = <ramp> <label>
-format-padding = 1
-format-underline = ${colors.background}
-format-background = ${colors.background}
-format-foreground = ${colors.color7}
-format-warn = <ramp> <label-warn>
-format-warn-padding = 1
-format-warn-bacground = ${colors.color0}
-format-warn-foreground = ${colors.color1}
-format-warn-underline = ${colors.color1}
-
-label      = %temperature%
-label-warn = %temperature%
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-3 = 
-ramp-4 = 
-ramp-5 = 
+label = %percentage_used:2%%
 
 [module/powermenu]
 type = custom/menu
 
-label-open            = 
-label-open-background = ${colors.background}
-label-open-foreground = ${colors.color1}
-label-open-padding    = 1
-label-open-underline  = ${colors.background}
+label-open             = 
+label-open-background  = ${colors.background}
+label-open-foreground  = ${colors.color1}
+label-open-padding     = 1
+label-open-underline   = ${colors.background}
 
-label-close            = 
+label-close            = 
 label-close-background = ${colors.color0}
 label-close-foreground = ${colors.color1}
 label-close-padding    = 1
@@ -407,15 +201,88 @@ menu-0-2-foreground = ${colors.color1}
 menu-0-2-padding    = 1
 menu-0-2-underline  = ${colors.color1}
 
-[settings]
-screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
+[module/temperature]
+type = internal/temperature
 
-[global/wm]
-margin-top = 0
-;margin-bottom = 0
+hwmon-path       = ${env:TMP}
+thermal-zone     = 0
+warn-temperature = 60
 
-; vim:ft=dosini
+format                 = <ramp> <label>
+format-padding         = 1
+format-underline       = ${colors.background}
+format-background      = ${colors.background}
+format-foreground      = ${colors.color7}
+label                  = %temperature:2%
+
+format-warn            = <ramp> <label-warn>
+format-warn-padding    = 1
+format-warn-background = ${colors.color0}
+format-warn-foreground = ${colors.color1}
+format-warn-underline  = ${colors.color1}
+label-warn             = %temperature:2%
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+ramp-5 = 
+
+[module/time]
+type = internal/date
+interval = 1
+
+date     = " %y/%m/%d"
+date-alt = " %y/%m/%d"
+time     = " %H:%M"
+time-alt = " %H:%M"
+
+label            = "%time%"
+label-background = ${colors.background}
+label-foreground = ${colors.color3}
+label-padding    = 1
+label-underline  = ${colors.background}
+
+[module/volume]
+type = internal/alsa
+
+format-volume            = <ramp-volume> <label-volume>
+format-volume-foreground = ${colors.color5}
+format-volume-padding    = 1
+format-volume-underline  = ${colors.background}
+label-volume             = "%percentage%%"
+
+format-muted-background  = ${colors.color0}
+format-muted-foreground  = ${colors.color5}
+format-muted-padding     = 1
+format-muted-underline   = ${colors.color5}
+label-muted              = "ﱝ %percentage%%"
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 墳
+ramp-volume-3 = 
+
+[module/wlan]
+type = internal/network
+
+interface = ${env:WLAN}
+interval  = 3.0
+
+format-connected               =  <label-connected>
+format-connected-foreground    = ${colors.info}
+label-connected                = %essid%
+
+format-disconnected            = 睊<label-disconnected>
+format-disconnected-foreground = ${colors.danger}
+label-disconnected             = %ifname% disconnected
+
+[module/xwindow]
+type = internal/xwindow
+
+format-background = ${colors.color0}
+format-foreground = ${colors.color2}
+format-padding    = 1
+format-underline  = ${colors.color2}
+label             = %title:0:30:...%
