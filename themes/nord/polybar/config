@@ -271,12 +271,14 @@ interface = ${env:WLAN}
 interval  = 3.0
 
 format-connected               =  <label-connected>
-format-connected-foreground    = ${colors.info}
+format-connected-foreground    = ${colors.color2}
 label-connected                = %essid%
+label-connected-padding        = 1
 
 format-disconnected            = 睊<label-disconnected>
-format-disconnected-foreground = ${colors.danger}
+format-disconnected-foreground = ${colors.color5}
 label-disconnected             = %ifname% disconnected
+label-disconnected-padding     = 1
 
 [module/xwindow]
 type = internal/xwindow
