@@ -94,6 +94,7 @@ label-empty              = %icon%
 label-empty-padding      = 1
 label-empty-underline    = ${colors.background}
 label-focused            = %icon%
+label-focused-background = ${colors.color0}
 label-focused-padding    = 1
 label-focused-underline  = ${colors.color4}
 label-normal             = %icon%
@@ -270,14 +271,14 @@ type = internal/network
 interface = ${env:WLAN}
 interval  = 3.0
 
-format-connected               =  <label-connected>
+format-connected               = <label-connected>
 format-connected-foreground    = ${colors.color2}
 label-connected                = %essid%
 label-connected-padding        = 1
 
 format-disconnected            = 睊<label-disconnected>
 format-disconnected-foreground = ${colors.color5}
-label-disconnected             = %ifname% disconnected
+label-disconnected             = disconnected
 label-disconnected-padding     = 1
 
 [module/xwindow]
