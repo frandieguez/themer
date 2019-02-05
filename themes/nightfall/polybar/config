@@ -24,7 +24,7 @@ background =
 foreground = ${colors.foreground}
 
 tray-position    = center
-tray-background  = #aa000000
+tray-background  =
 tray-padding     = 5
 tray-transparent = true
 
