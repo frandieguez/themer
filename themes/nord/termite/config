@@ -1,3 +1,4 @@
+# vim:ft=dosini
 [options]
 scroll_on_output = false
 scroll_on_keystroke = true
@@ -11,7 +12,6 @@ font = Hack Nerd Font 12
 scrollback_lines = 10000
 search_wrap = true
 icon_name = terminal
-#geometry = 640x480
 
 # "system", "on" or "off"
 cursor_blink = on
@@ -29,11 +29,11 @@ filter_unmatched_urls = true
 #modify_other_keys = true
 
 [colors]
-foreground        = #D8DEE9
 background        = #2E3440
-foreground_bold   = #D8DEE9
 cursor            = #D8DEE9
 cursor_foreground = #2E3440
+foreground        = #D8DEE9
+foreground_bold   = #D8DEE9
 highlight         = #4C566A
 
 color0  = #3B4252
