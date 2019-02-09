@@ -1,0 +1,55 @@
+# vim:ft=dosini
+[options]
+scroll_on_output = false
+scroll_on_keystroke = true
+audible_bell = false
+mouse_autohide = true
+allow_bold = true
+dynamic_title = true
+urgent_on_bell = true
+clickable_url = true
+font = RobotoMono Nerd Font Mono 12
+scrollback_lines = 10000
+search_wrap = true
+icon_name = terminal
+
+# "system", "on" or "off"
+cursor_blink = on
+
+# "block", "underline" or "ibeam"
+cursor_shape = block
+
+# set size hints for the window
+#size_hints = false
+
+# Hide links that are no longer valid in url select overlay mode
+filter_unmatched_urls = true
+
+# emit escape sequences for extra modified keys
+#modify_other_keys = false
+
+[colors]
+background        = #002b36
+cursor            = #93a1a1
+foreground        = #839496
+cursor_foreground = #002b36
+foreground_bold   = #eee8d5
+foreground_dim    = #888888
+highlight         = #839496
+
+color0  = #073642
+color1  = #DC322F
+color2  = #859900
+color3  = #B58900
+color4  = #268BD2
+color5  = #D33682
+color6  = #2AA198
+color7  = #EEE8D5
+color8  = #002B36
+color9  = #CB4B16
+color10 = #586E75
+color11 = #657B83
+color12 = #839496
+color13 = #6C71C4
+color14 = #93A1A1
+color15 = #FDF6E3
