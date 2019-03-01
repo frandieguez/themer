@@ -205,7 +205,7 @@ menu-0-2-underline  = ${colors.color1}
 [module/temperature]
 type = internal/temperature
 
-hwmon-path       = ${env:TMP}
+hwmon-path       = ${env:TEMPERATURE}
 thermal-zone     = 0
 warn-temperature = 60
 
