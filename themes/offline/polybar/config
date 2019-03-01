@@ -1,5 +1,4 @@
 ; vim:ft=dosini
-
 [settings]
 screenchange-reload = true
 
@@ -12,7 +11,7 @@ success    = #24bae2
 warning    = #fed02e
 
 [bar/top]
-fixed-center     = false
+fixed-center     = true
 height           = 27
 monitor          = ${env:PRIMARY}
 scroll-down      = bspwm-deskprev
@@ -20,42 +19,102 @@ scroll-up        = bspwm-desknext
 width            = 100%
 wm-restack       = bspwm
 
+background   = ${colors.background}
+foreground   = ${colors.foreground}
+
 tray transparent = false
 tray-background  = ${colors.background}
 tray-padding     = 5
 tray-position    = right
 
-background    = ${colors.background}
-border-color  = #00000000
-foreground    = ${colors.foreground}
-line-color    = #f00
-line-size     = 3
-
 font-0 = fixed:pixelsize=10;2
-font-1 = MesloLGSDZ Nerd Font:pixelsize=10;0
-;font-1 = fixed:pixelsize=10;2
-font-2 = siji:pixelsize=10;1
-font-3 = fontawesome:pixelsize=10;1
+font-1 = MesloLGSDZ Nerd Font:pixelsize=10;1
 
-modules-left       = powermenu bspwm xwindow
-modules-center     =
-modules-right      = xbacklight xkeyboard memory cpu temperature wlan eth date volume battery
-module-margin-left = 2
+modules-left  = powermenu bspwm xwindow
+modules-right = lan wlan memory cpu temperature date volume battery
 
-[module/xwindow]
-type = internal/xwindow
-label            = %title:0:30:...%
-label-foreground = ${colors.success}
+[module/battery]
+type = internal/battery
 
-[module/xkeyboard]
-type = internal/xkeyboard
+battery = BAT0
+adapter = ${env:POWER}
+full-at = 98
 
-blacklist-0             = num lock
-format-foreground       = ${colors.info}
-format-prefix           = " "
-label-layout            = %layout%
-label-indicator-padding = 2
-label-indicator-margin  = 1
+format-charging               = <animation-charging> <label-charging>
+format-charging-foreground    = ${colors.success}
+format-charging-padding       = 2
+label-charging-foreground     = ${colors.success}
+
+format-discharging            = <ramp-capacity> <label-discharging>
+format-discharging-foreground = ${colors.success}
+format-discharging-padding    = 2
+label-discharging-foreground  = ${colors.success}
+
+format-full-prefix            = " "
+format-full-prefix-foreground = ${colors.info}
+format-full-padding           = 2
+label-full-foreground         = ${colors.info}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-foreground = ${colors.success}
+
+[module/bspwm]
+type           = internal/bspwm
+pin-workspaces = false
+
+label-empty               = %icon%
+label-empty-foreground    = ${colors.info}
+label-empty-padding       = 2
+label-focused             = %icon%
+label-focused-foreground  = ${colors.success}
+label-focused-padding     = 2
+label-normal              = %icon%
+label-occupied            = %icon%
+label-occupied-foreground = ${colors.info}
+label-occupied-padding    = 2
+label-urgent              = %icon%
+label-urgent-foreground   = ${colors.danger}
+label-urgent-padding      = 2
+
+ws-icon-0       = code;
+ws-icon-1       = ssh;
+ws-icon-2       = web;
+ws-icon-3       = music;
+ws-icon-default = 
+
+[module/cpu]
+type     = internal/cpu
+interval = 2
+
+format-prefix              = " "
+format-prefix-foreground   = ${colors.info}
+format-prefix-padding-left = 2
+
+label = %percentage:2%%
+
+[module/date]
+type = internal/date
+interval = 1
+
+date     =
+date-alt = " %Y-%m-%d"
+time     = " %H:%M"
+time-alt = " %H:%M:%S"
+
+label               = %date% %time%
+label-foreground    = ${colors.info}
+label-padding-left  = 1
+label-padding-right = 3
 
 [module/filesystem]
 type = internal/fs
@@ -67,33 +126,25 @@ label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
-[module/bspwm]
-type           = internal/bspwm
-pin-workspaces = false
+[module/lan]
+type = internal/network
 
-label-empty               = %icon%
-label-empty-foreground    = ${colors.info}
-label-empty-padding       = 2
+interface = ${env:ETH}
+interval  = 3.0
 
-label-focused             = %icon%
-label-focused-foreground  = ${colors.success}
-label-focused-padding     = 2
+label-connected            =  %upspeed:8%  %downspeed:8%
+label-connected-foreground = ${colors.foreground}
+label-connected-padding    = 1
 
-label-normal              = %icon%
+[module/memory]
+type     = internal/memory
+interval = 2
 
-label-occupied            = %icon%
-label-occupied-foreground = ${colors.info}
-label-occupied-padding    = 2
-
-label-urgent              = %icon%
-label-urgent-foreground   = ${colors.danger}
-label-urgent-padding      = 2
-
-ws-icon-0       = code;
-ws-icon-1       = ssh;
-ws-icon-2       = web;
-ws-icon-3       = music;
-ws-icon-default = 
+format-prefix              = " "
+format-prefix-foreground   = ${colors.info}
+format-prefix-padding-left = 3
+label                      = %percentage_used:2%%
+label-foreground           = ${colors.info}
 
 [module/mpd]
 type = internal/mpd
@@ -108,189 +159,57 @@ icon-next = 
 label-song-maxlen = 25
 label-song-ellipsis = true
 
-[module/xbacklight]
-type = internal/xbacklight
+[module/powermenu]
+type = custom/menu
 
-format = <label> <bar>
-label = BL
+format-spacing = 0
 
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #ff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
+label-open                 = 
+label-open-foreground      = ${colors.danger}
+label-open-padding         = 2
 
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
+label-close                = 
+label-close-padding        = 2
+label-close-foreground     = ${colors.danger}
+label-separator-foreground = ${colors.foreground}
 
-[module/cpu]
-type = internal/cpu
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.info}
-format-prefix-padding-left = 1
-label = %percentage%%
-label-foreground = ${colors.info}
+; Lock
+menu-0-0            = 
+menu-0-0-exec       = slimlock
+menu-0-0-padding    = 2
+menu-0-0-foreground = ${colors.danger}
 
-[module/memory]
-type = internal/memory
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.info}
-format-prefix-padding-left = 1
-label = %percentage_used%%
-label-foreground = ${colors.info}
+; Reboot
+menu-0-1            = 
+menu-0-1-exec       = reboot
+menu-0-1-padding    = 2
+menu-0-1-foreground = ${colors.danger}
 
-[module/wlan]
-type = internal/network
-interface = ${env:WLAN}
-interval = 3.0
-
-format-connected =  <ramp-signal><label-connected>
-format-connected-foreground = ${colors.info}
-label-connected = %essid%
-label-connected-foreground = ${colors.info}
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-format-disconnected-padding = 1
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
-
-[module/eth]
-type = internal/network
-interface = net0
-interval = 3.0
-
-format-connected-underline = #55aa55
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
-[module/date]
-type = internal/date
-interval = 1
-
-date =
-date-alt = " %Y-%m-%d"
-
-time = %H:%M
-time-alt = %H:%M:%S
-
-;format-prefix = 
-format-prefix = 
-format-prefix-foreground = ${colors.info}
-
-label = %date% %time%
-label-foreground = ${colors.info}
-format-prefix-padding-left = 1
-label-padding-right = 1
-
-[module/volume]
-type = internal/volume
-
-format-volume = <ramp-volume> <label-volume>
-format-volume-foreground = ${colors.info}
-label-volume = %percentage%%
-
-format-muted-prefix = " "
-format-muted-foreground = ${colors.success}
-label-muted =  muted
-
-ramp-volume-0 = ""
-ramp-volume-1 = ""
-ramp-volume-2 = ""
-ramp-volume-3 = ""
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
-
-[module/battery]
-type = internal/battery
-battery = BAT0
-adapter = ${env:POWER}
-full-at = 98
-
-format-charging = <animation-charging> <label-charging>
-format-charging-foreground = ${colors.success}
-format-charging-padding = 2
-label-charging-foreground = ${colors.success}
-
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.info}
-format-full-padding = 2
-label-full-foreground = ${colors.info}
-
-format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-foreground = ${colors.success}
-format-discharging-padding = 2
-label-discharging-foreground = ${colors.success}
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
-animation-charging-foreground = ${colors.success}
-animation-charging-framerate = 750
+; Poweroff
+menu-0-2            = 
+menu-0-2-exec       = shutdown -P now
+menu-0-2-padding    = 2
+menu-0-2-foreground = ${colors.danger}
 
 [module/temperature]
 type = internal/temperature
-thermal-zone = 0
+
+hwmon-path       = ${env:TEMPERATURE}
+thermal-zone     = 0
 warn-temperature = 60
-label-transparent = true
 
-format = <ramp> <label>
-format-warn = <ramp> <label-warn>
-format-foreground = ${colors.info}
+format                 = <ramp> <label>
+format-foreground      = ${colors.info}
+label                  = %temperature%
+label-padding-right    = 1
+label-transparent      = true
+
+format-warn            = <ramp> <label-warn>
 format-warn-foreground = ${colors.success}
+format-warn-padding-left    = 2
+label-warn             = %temperature%
 
-label = %temperature%
-label-padding-right = 1
-label-warn =  %temperature%
-ramp-padding-left = 1
-
+ramp-padding-left = 2
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
@@ -298,39 +217,39 @@ ramp-3 = 
 ramp-4 = 
 ramp-5 = 
 
-[module/powermenu]
-type = custom/menu
+[module/volume]
+type = internal/volume
 
-format-spacing = 0
+format-volume            = <ramp-volume> <label-volume>
+format-volume-foreground = ${colors.info}
+label-volume             = %percentage%%
 
-label-open =  
-label-open-background = #0000
-label-open-foreground = ${colors.info}
-label-open-padding = 2
+format-muted-foreground  = ${colors.danger}
+label-muted              = "ﱝ %percentage%%"
 
-label-close = 
-label-close-padding = 2
-label-close-background = #0000
-label-close-foreground = ${colors.success}
-label-separator = |
-label-separator-background = #0000
-label-separator-foreground = ${colors.info}
+ramp-volume-0 = ""
+ramp-volume-1 = ""
+ramp-volume-2 = ""
+ramp-volume-3 = ""
 
-; Lock
-menu-0-0 = 
-menu-0-0-exec = slimlock
-menu-0-0-padding = 2
-menu-0-0-background = #0000
-menu-0-0-foreground = ${colors.success}
-; Reboot
-menu-0-1 = 
-menu-0-1-exec = reboot
-menu-0-1-padding = 2
-menu-0-1-background = #0000
-menu-0-1-foreground = ${colors.success}
-; Poweroff
-menu-0-2 = 
-menu-0-2-exec = shutdown -P now
-menu-0-2-padding = 2
-menu-0-2-background = #0000
-menu-0-2-foreground = ${colors.success}
+[module/wlan]
+type = internal/network
+
+interface = ${env:WLAN}
+interval  = 3.0
+
+format-connected               = <label-connected>
+format-connected-foreground    = ${colors.info}
+label-connected                = %essid%
+label-connected-foreground     = ${colors.info}
+
+format-disconnected            = 睊<label-disconnected>
+format-disconnected-foreground = ${colors.danger}
+label-disconnected             = disconnected
+label-disconnected-padding     = 1
+
+[module/xwindow]
+type = internal/xwindow
+
+label            = %title:0:30:...%
+label-foreground = ${colors.success}
