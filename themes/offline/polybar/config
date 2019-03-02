@@ -251,5 +251,6 @@ label-disconnected-padding     = 1
 [module/xwindow]
 type = internal/xwindow
 
-label            = %title:0:30:...%
-label-foreground = ${colors.success}
+label              = %title:0:30:...%
+label-foreground   = ${colors.success}
+label-padding-left = 2
