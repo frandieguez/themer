@@ -189,8 +189,7 @@ icon-single    = 綾
 icon-consume   = 
 
 [module/powermenu]
-type = custom/menu
-
+type         = custom/menu
 expand-right = false
 
 label-open                 = 
