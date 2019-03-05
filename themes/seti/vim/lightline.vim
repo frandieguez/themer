@@ -1,4 +1,5 @@
 let s:color0   = [ '#0f1317', 0 ]
+let s:color2   = [ '#63fca3', 2 ]
 let s:color3   = [ '#fee89a', 3 ]
 let s:color4   = [ '#78b2d5', 4 ]
 let s:color6   = [ '#0396f7', 6 ]
@@ -13,34 +14,40 @@ let s:color15  = [ '#d6d6d6', 15 ]
 
 let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
 
-let s:p.normal.error    = [ [ s:color0, s:color9 ] ]
+let s:p.normal.error    = [ [ s:color0,  s:color9 ] ]
 let s:p.insert.error    = [ [ s:color10, s:color0 ] ]
-let s:p.replace.error   = [ [ s:color9, s:color0 ] ]
-let s:p.visual.error    = [ [ s:color3, s:color0 ] ]
+let s:p.replace.error   = [ [ s:color9,  s:color0 ] ]
+let s:p.visual.error    = [ [ s:color3,  s:color0 ] ]
 
-let s:p.normal.left     = [ [ s:color0, s:color15 ], [ s:color15, s:color0 ] ]
-let s:p.insert.left     = [ [ s:color0, s:color10 ], [ s:color10, s:color0 ] ]
-let s:p.replace.left    = [ [ s:color0, s:color9 ], [ s:color9, s:color0 ] ]
-let s:p.visual.left     = [ [ s:color0, s:color3 ], [ s:color3, s:color0 ] ]
-let s:p.inactive.left   = [ [ s:color7, s:color0 ], [ s:color7, s:color0 ] ]
+let s:p.normal.left     = [ [ s:color7,  s:color0 ], [ s:color0, s:color7  ], [ s:color7,  s:color0 ] ]
+let s:p.insert.left     = [ [ s:color10, s:color0 ], [ s:color0, s:color10 ], [ s:color10, s:color0 ] ]
+let s:p.replace.left    = [ [ s:color9,  s:color0 ], [ s:color0, s:color9  ], [ s:color9,  s:color0 ] ]
+let s:p.visual.left     = [ [ s:color3,  s:color0 ], [ s:color0, s:color3  ], [ s:color3,  s:color0 ] ]
+let s:p.inactive.left   = [ [ s:color7,  s:color0 ], [ s:color7, s:color0  ] ]
 
-let s:p.normal.middle   = [ [ s:color15, s:color0 ] ]
+let s:p.normal.middle   = [ [ s:color7, s:color0 ] ]
 
-let s:p.normal.right    = [ [ s:color0, s:color15 ], [ s:color15, s:color0 ] ]
+let s:p.normal.right    = [ [ s:color0, s:color7  ], [ s:color7,  s:color0 ] ]
 let s:p.insert.right    = [ [ s:color0, s:color10 ], [ s:color10, s:color0 ] ]
-let s:p.replace.right   = [ [ s:color0, s:color9 ], [ s:color9, s:color0 ] ]
-let s:p.visual.right    = [ [ s:color0, s:color3 ], [ s:color3, s:color0 ] ]
-let s:p.inactive.right  = [ [ s:color7, s:color0 ], [ s:color7, s:color0 ] ]
+let s:p.replace.right   = [ [ s:color0, s:color9  ], [ s:color9,  s:color0 ] ]
+let s:p.visual.right    = [ [ s:color0, s:color3  ], [ s:color3,  s:color0 ] ]
+let s:p.inactive.right  = [ [ s:color7, s:color0  ], [ s:color7,  s:color0 ] ]
 
-let s:p.normal.warning  = [ [ s:color0, s:color11 ] ]
-let s:p.insert.warning  = [ [ s:color10, s:color0 ] ]
-let s:p.replace.warning = [ [ s:color9, s:color0 ] ]
-let s:p.visual.warning  = [ [ s:color11, s:color0 ] ]
+let s:p.normal.warning  = [ [ s:color0,  s:color11 ] ]
+let s:p.insert.warning  = [ [ s:color10, s:color0  ] ]
+let s:p.replace.warning = [ [ s:color9,  s:color0  ] ]
+let s:p.visual.warning  = [ [ s:color11, s:color0  ] ]
 
-let s:p.tabline.left    = [ [ s:color15, s:color0 ] ]
-let s:p.tabline.tabsel  = [ [ s:color15, s:color6 ] ]
-let s:p.tabline.middle  = [ [ s:color15, s:color0 ] ]
+let s:p.tabline.left    = [ [ s:color7, s:color0 ] ]
+let s:p.tabline.tabsel  = [ [ s:color0, s:color7 ] ]
+let s:p.tabline.middle  = [ [ s:color7, s:color0 ] ]
 let s:p.tabline.right   = copy(s:p.normal.right)
 
 let g:lightline#colorscheme#seti#palette = lightline#colorscheme#flatten(s:p)
+
+let g:lightline.separator = { 'left': '', 'right': '' }
+let g:lightline.subseparator = { 'left': '', 'right': '' }
+let g:lightline.tabline_separator = { 'left': '', 'right': '' }
+let g:lightline.tabline_subseparator = { 'left': '', 'right': '' }
+
 let g:lightline.colorscheme = 'seti'
