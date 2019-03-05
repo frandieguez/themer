@@ -18,22 +18,22 @@ let s:color15  = [ '#FDF6E3', 15 ]
 let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
 
 let s:p.normal.left     = [ [ s:color0,  s:color12 ], [ s:color12, s:color0 ] ]
-let s:p.insert.left     = [ [ s:color0,  s:color2 ],  [ s:color2,  s:color0 ] ]
-let s:p.replace.left    = [ [ s:color0,  s:color9 ],  [ s:color9,  s:color0 ] ]
-let s:p.visual.left     = [ [ s:color0,  s:color3 ],  [ s:color3,  s:color0 ] ]
-let s:p.inactive.left   = [ [ s:color12, s:color0 ],  [ s:color7,  s:color0 ] ]
+let s:p.insert.left     = [ [ s:color0,  s:color2  ], [ s:color2,  s:color0 ] ]
+let s:p.replace.left    = [ [ s:color0,  s:color9  ], [ s:color9,  s:color0 ] ]
+let s:p.visual.left     = [ [ s:color0,  s:color3  ], [ s:color3,  s:color0 ] ]
+let s:p.inactive.left   = [ [ s:color12, s:color0  ], [ s:color7,  s:color0 ] ]
 
 let s:p.normal.middle   = [ [ s:color12, s:color0 ] ]
 
 let s:p.normal.right    = [ [ s:color0,  s:color12 ], [ s:color12, s:color0 ] ]
 let s:p.insert.right    = [ [ s:color0,  s:color2  ], [ s:color2,  s:color0 ] ]
-let s:p.replace.right   = [ [ s:color0,  s:color9 ],  [ s:color9,  s:color0 ] ]
-let s:p.visual.right    = [ [ s:color0,  s:color3 ],  [ s:color3,  s:color0 ] ]
-let s:p.inactive.right  = [ [ s:color12, s:color0 ],  [ s:color12, s:color0 ] ]
+let s:p.replace.right   = [ [ s:color0,  s:color9  ], [ s:color9,  s:color0 ] ]
+let s:p.visual.right    = [ [ s:color0,  s:color3  ], [ s:color3,  s:color0 ] ]
+let s:p.inactive.right  = [ [ s:color12, s:color0  ], [ s:color12, s:color0 ] ]
 
-let s:p.tabline.left    = [ [ s:color12, s:color0 ] ]
+let s:p.tabline.left    = [ [ s:color12, s:color0  ] ]
 let s:p.tabline.tabsel  = [ [ s:color0,  s:color12 ] ]
-let s:p.tabline.middle  = [ [ s:color0,  s:color0 ] ]
+let s:p.tabline.middle  = [ [ s:color0,  s:color0  ] ]
 let s:p.tabline.right   = copy(s:p.tabline.tabsel)
 
 let s:p.normal.error    = [ [ s:color0,  s:color1 ] ]
@@ -42,12 +42,14 @@ let s:p.replace.error   = [ [ s:color9,  s:color0 ] ]
 let s:p.visual.error    = [ [ s:color3,  s:color0 ] ]
 
 let s:p.normal.warning  = [ [ s:color0,  s:color11 ] ]
-let s:p.insert.warning  = [ [ s:color10, s:color0 ] ]
-let s:p.replace.warning = [ [ s:color9,  s:color0 ] ]
-let s:p.visual.warning  = [ [ s:color11, s:color0 ] ]
+let s:p.insert.warning  = [ [ s:color10, s:color0  ] ]
+let s:p.replace.warning = [ [ s:color9,  s:color0  ] ]
+let s:p.visual.warning  = [ [ s:color11, s:color0  ] ]
 
 let g:lightline#colorscheme#solarized#palette = lightline#colorscheme#flatten(s:p)
 
+let g:lightline.active.left  = [ [ 'fugitive', 'ctrlpitem' ], [ 'ctrlp', 'filename' ] ]
+let g:lightline.active.right = [ [ 'lineinfo' ], [ 'paste', 'percent', 'debug', 'neomake' ] ]
 let g:lightline.separator = { 'left': '', 'right': '' }
 let g:lightline.subseparator = { 'left': '', 'right': '' }
 let g:lightline.tabline_separator = { 'left': '', 'right': '' }

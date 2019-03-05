@@ -18,29 +18,29 @@ let s:color16  = [ '#2E3440', 16 ]
 
 let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
 
-let s:p.normal.error    = [ [ s:color0, s:color9 ] ]
+let s:p.normal.error    = [ [ s:color0,  s:color9 ] ]
 let s:p.insert.error    = [ [ s:color10, s:color0 ] ]
-let s:p.replace.error   = [ [ s:color9, s:color0 ] ]
-let s:p.visual.error    = [ [ s:color3, s:color0 ] ]
+let s:p.replace.error   = [ [ s:color9,  s:color0 ] ]
+let s:p.visual.error    = [ [ s:color3,  s:color0 ] ]
 
-let s:p.normal.left     = [ [ s:color0, s:color15 ], [ s:color15, s:color8 ] ]
-let s:p.insert.left     = [ [ s:color0, s:color10 ], [ s:color10, s:color8 ] ]
-let s:p.replace.left    = [ [ s:color0, s:color9 ], [ s:color9, s:color8 ] ]
-let s:p.visual.left     = [ [ s:color0, s:color3 ], [ s:color3, s:color8 ] ]
-let s:p.inactive.left   = [ [ s:color15, s:color0 ], [ s:color7, s:color0 ] ]
+let s:p.normal.left     = [ [ s:color0,  s:color15 ], [ s:color15, s:color8 ] ]
+let s:p.insert.left     = [ [ s:color0,  s:color10 ], [ s:color10, s:color8 ] ]
+let s:p.replace.left    = [ [ s:color0,  s:color9  ], [ s:color9,  s:color8 ] ]
+let s:p.visual.left     = [ [ s:color0,  s:color3  ], [ s:color3,  s:color8 ] ]
+let s:p.inactive.left   = [ [ s:color15, s:color0  ], [ s:color7,  s:color0 ] ]
 
 let s:p.normal.middle   = [ [ s:color15, s:color0 ] ]
 
-let s:p.normal.right    = [ [ s:color0, s:color15 ], [ s:color15, s:color8 ] ]
-let s:p.insert.right    = [ [ s:color0, s:color10 ], [ s:color10, s:color8 ] ]
-let s:p.replace.right   = [ [ s:color0, s:color9 ], [ s:color9, s:color8 ] ]
-let s:p.visual.right    = [ [ s:color0, s:color3 ], [ s:color3, s:color8 ] ]
-let s:p.inactive.right  = [ [ s:color15, s:color0 ], [ s:color15, s:color0 ] ]
+let s:p.normal.right    = [ [ s:color0,  s:color15 ], [ s:color15, s:color8 ], [ s:color15, s:color0 ] ]
+let s:p.insert.right    = [ [ s:color0,  s:color10 ], [ s:color10, s:color8 ], [ s:color10, s:color0 ] ]
+let s:p.replace.right   = [ [ s:color0,  s:color9  ], [ s:color9,  s:color8 ], [ s:color9,  s:color0 ] ]
+let s:p.visual.right    = [ [ s:color0,  s:color3  ], [ s:color3,  s:color8 ], [ s:color3,  s:color0 ] ]
+let s:p.inactive.right  = [ [ s:color15, s:color0  ], [ s:color15, s:color0 ], [ s:color15, s:color0 ] ]
 
-let s:p.normal.warning  = [ [ s:color0, s:color11 ] ]
-let s:p.insert.warning  = [ [ s:color10, s:color0 ] ]
-let s:p.replace.warning = [ [ s:color9, s:color0 ] ]
-let s:p.visual.warning  = [ [ s:color11, s:color0 ] ]
+let s:p.normal.warning  = [ [ s:color0,  s:color11 ] ]
+let s:p.insert.warning  = [ [ s:color10, s:color0  ] ]
+let s:p.replace.warning = [ [ s:color9,  s:color0  ] ]
+let s:p.visual.warning  = [ [ s:color11, s:color0  ] ]
 
 let s:p.tabline.left    = [ [ s:color15, s:color0 ] ]
 let s:p.tabline.tabsel  = [ [ s:color15, s:color8 ] ]
@@ -49,3 +49,6 @@ let s:p.tabline.right   = copy(s:p.tabline.tabsel)
 
 let g:lightline#colorscheme#nord#palette = lightline#colorscheme#flatten(s:p)
 let g:lightline.colorscheme = 'nord'
+
+let g:lightline.active.left  = [ [ 'fugitive', 'ctrlpitem' ], [ 'ctrlp', 'filename' ] ]
+let g:lightline.active.right = [ [ 'lineinfo' ], [ 'percent', 'debug', 'neomake' ], [ 'paste' ] ]
