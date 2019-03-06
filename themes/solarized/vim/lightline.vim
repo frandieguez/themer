@@ -41,10 +41,10 @@ let s:p.insert.error    = [ [ s:color2,  s:color0 ] ]
 let s:p.replace.error   = [ [ s:color9,  s:color0 ] ]
 let s:p.visual.error    = [ [ s:color3,  s:color0 ] ]
 
-let s:p.normal.warning  = [ [ s:color0,  s:color11 ] ]
-let s:p.insert.warning  = [ [ s:color10, s:color0  ] ]
-let s:p.replace.warning = [ [ s:color9,  s:color0  ] ]
-let s:p.visual.warning  = [ [ s:color11, s:color0  ] ]
+let s:p.normal.warning  = [ [ s:color0,  s:color3 ] ]
+let s:p.insert.warning  = [ [ s:color10, s:color0 ] ]
+let s:p.replace.warning = [ [ s:color9,  s:color0 ] ]
+let s:p.visual.warning  = [ [ s:color3,  s:color0 ] ]
 
 let g:lightline#colorscheme#solarized#palette = lightline#colorscheme#flatten(s:p)
 

@@ -1,0 +1,28 @@
+# Status format
+set status_format = "Folder: %f  %r%m messages  %?n?%n new  ?%?d?%d to delete  ?%?t?%t tagged  ?%?p?%p postponed ?"
+
+# Colors
+color normal            color12 color8
+color status            color12 color0
+color index             color12 color8 '.*'
+color indicator         color15 color0
+color index_number      color3  color8
+color index_collapsed   color5  color8
+color index_size        color5  color8
+color index_subject     color6  color8 '.*'
+color index_author      color4  color8 '.*'
+color index_date        color2  color8
+color index_flags       color1  color8 '.*'
+color header            color4  color8 'From: .*'
+color header            color2  color8 'Date: .*'
+color header            color6  color8 'Subject: .*'
+color header            color5  color8 'To: .*'
+color message           color12 color8
+color body              color6  color8 '.*'
+color bold              color15 color8
+color signature         color5  color8
+color attachment        color7  color8
+color sidebar_new       color9  color8
+color sidebar_divider   color0  color8
+color sidebar_indicator color3  color8
+color tree              color3  color8

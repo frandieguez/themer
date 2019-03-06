@@ -1,6 +1,7 @@
 ; vim:ft=dosini
 [settings]
 screenchange-reload = true
+compositing-border = lighten
 
 [colors]
 foreground = #839496
@@ -25,7 +26,6 @@ wm-restack   = bspwm
 
 background          = ${colors.background}
 border-bottom-color = ${colors.foreground}
-border-bottom-size  = 0
 foreground          = ${colors.foreground}
 line-size           = 2
 padding-left        = 0
