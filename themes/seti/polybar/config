@@ -73,26 +73,28 @@ adapter = ${env:POWER}
 full-at = 98
 
 format-charging               = "<animation-charging><label-charging>"
+format-charging-background    = ${colors.color11}
 format-charging-foreground    = ${colors.color0}
 label-charging                = %percentage:3%%
-label-charging-background     = ${colors.color3}
+label-charging-background     = ${colors.color0}
+label-charging-foreground     = ${colors.color11}
 label-charging-padding        = 1
-animation-charging-background = ${colors.color11}
 animation-charging-padding    = 1
+
+format-discharging            = "<ramp-capacity><label-discharging>"
+format-discharging-background = ${colors.color9}
+format-discharging-foreground = ${colors.color0}
+label-discharging             = %percentage:3%%
+label-discharging-background  = ${colors.color0}
+label-discharging-foreground  = ${colors.color9}
+label-discharging-padding     = 1
 
 format-full                   = "<ramp-capacity><label-full>"
 format-full-background        = ${colors.color7}
 format-full-foreground        = ${colors.color0}
-label-full-background         = ${colors.color4}
+label-full-background         = ${colors.color0}
+label-full-foreground         = ${colors.color7}
 label-full-padding            = 1
-
-format-discharging            = "<ramp-capacity><label-discharging>"
-format-discharging-background = ${colors.color1}
-format-discharging-foreground = ${colors.color0}
-label-discharging             = %percentage:3%%
-label-discharging-foreground  = ${colors.color0}
-label-discharging-background  = ${colors.color9}
-label-discharging-padding     = 1
 
 ramp-capacity-padding = 1
 ramp-capacity-0       = 
@@ -133,11 +135,12 @@ label-empty-padding       = 1
 type     = internal/cpu
 interval = 2
 
-format-background        = ${colors.color4}
-format-foreground        = ${colors.color0}
+format-background        = ${colors.color0}
+format-foreground        = ${colors.color7}
 format-prefix            = ""
 format-prefix-padding    = 1
 format-prefix-background = ${colors.color7}
+format-prefix-foreground = ${colors.color0}
 label                    = %percentage:2%%
 label-padding            = 1
 
@@ -151,8 +154,8 @@ format-connected-prefix-foreground = ${colors.color0}
 format-connected-prefix-padding    = 1
 label-connected                    = %downspeed:8%
 label-connected-padding            = 1
-label-connected-background         = ${colors.color4}
-label-connected-foreground         = ${colors.color0}
+label-connected-background         = ${colors.color0}
+label-connected-foreground         = ${colors.color7}
 
 [module/lan-u]
 type = internal/network
@@ -164,17 +167,18 @@ format-connected-prefix-foreground = ${colors.color0}
 format-connected-prefix-padding    = 1
 label-connected                    = %upspeed:8%
 label-connected-padding            = 1
-label-connected-background         = ${colors.color4}
-label-connected-foreground         = ${colors.color0}
+label-connected-background         = ${colors.color0}
+label-connected-foreground         = ${colors.color7}
 
 [module/memory]
 type     = internal/memory
 interval = 2
 
-format-background        = ${colors.color4}
-format-foreground        = ${colors.color0}
+format-background        = ${colors.color0}
+format-foreground        = ${colors.color7}
 format-prefix            = ""
 format-prefix-background = ${colors.color7}
+format-prefix-foreground = ${colors.color0}
 format-prefix-padding    = 1
 label                    = "%percentage_used:2%%"
 label-padding            = 1
@@ -191,8 +195,8 @@ format-prefix-foreground = ${colors.color0}
 format-prefix-padding    = 1
 
 label            = %date%
-label-background = ${colors.color4}
-label-foreground = ${colors.color0}
+label-background = ${colors.color0}
+label-foreground = ${colors.color7}
 label-padding    = 1
 
 [module/padding]
@@ -245,14 +249,16 @@ format                 = <ramp><label>
 format-background      = ${colors.color7}
 format-foreground      = ${colors.color0}
 label                  = %temperature%
-label-background       = ${colors.color4}
+label-background       = ${colors.color0}
+label-foreground       = ${colors.color7}
 label-padding          = 1
 
 format-warn            = <ramp><label-warn>
 format-warn-background = ${colors.color9}
 format-warn-foreground = ${colors.color0}
 label-warn             = %temperature%
-label-warn-background  = ${colors.color1}
+label-warn-background  = ${colors.color0}
+label-warn-foreground  = ${colors.color1}
 label-warn-padding     = 1
 
 ramp-0 = 
@@ -275,24 +281,26 @@ format-prefix-foreground = ${colors.color0}
 format-prefix-padding    = 1
 
 label = %date% %time%
-label-background = ${colors.color4}
-label-foreground = ${colors.color0}
+label-background = ${colors.color0}
+label-foreground = ${colors.color7}
 label-padding-right = 1
 
 [module/volume]
 type = internal/volume
 
 format-volume                  = <ramp-volume><label-volume>
-format-volume-background       = ${colors.color4}
+format-volume-background       = ${colors.color7}
 format-volume-foreground       = ${colors.color0}
 label-volume                   = " %percentage:3%% "
-label-volume-background        = ${colors.color4}
+label-volume-background        = ${colors.color0}
+label-volume-foreground        = ${colors.color7}
 
 format-muted                   = <label-muted>
-format-muted-background        = ${colors.color1}
-format-muted-foreground        = ${colors.color0}
+format-muted-background        = ${colors.color0}
+format-muted-foreground        = ${colors.color9}
 format-muted-prefix            = 
 format-muted-prefix-background = ${colors.color9}
+format-muted-prefix-foreground = ${colors.color0}
 format-muted-prefix-padding    = 1
 label-muted                    = " %percentage:3%% "
 
@@ -310,23 +318,22 @@ interface = ${env:WLAN}
 interval  = 3.0
 
 format-connected            = <ramp-signal><label-connected>
+format-connected-background = ${colors.color7}
 format-connected-foreground = ${colors.color0}
 label-connected             = %essid%
 label-connected-padding     = 1
-label-connected-background  = ${colors.color4}
-label-connected-foreground  = ${colors.color0}
+label-connected-background  = ${colors.color0}
+label-connected-foreground  = ${colors.color7}
 
 format-disconnected =
 format-disconnected-padding = 1
 
-ramp-signal-0          = 
-ramp-signal-background = ${colors.color7}
-ramp-signal-foreground = ${colors.color0}
-ramp-signal-padding    = 1
+ramp-signal-0       = 
+ramp-signal-padding = 1
 
 [module/xwindow]
 type = internal/xwindow
 
-label             = %title:0:30:...%
 format-foreground = ${colors.color7}
-label-padding = 2
+label             = %title:0:30:...%
+label-padding     = 1
