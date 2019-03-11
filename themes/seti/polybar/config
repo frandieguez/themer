@@ -38,9 +38,9 @@ module-margin-left  = 1
 
 font-0 = FuraMono Nerd Font Mono:pixelsize=12;3
 
-modules-left   = xwindow
+modules-left   = mpd
 modules-center = bspwm
-modules-right  = powermenu
+modules-right  = xwindow powermenu
 
 [bar/top]
 fixed-center = true
@@ -53,7 +53,6 @@ wm-restack   = bspwm
 
 background          = ${colors.color0}
 foreground          = ${colors.foreground}
-module-margin-left  = 1
 
 tray-position    = center
 tray-padding     = 5
@@ -198,6 +197,37 @@ label            = %date%
 label-background = ${colors.color0}
 label-foreground = ${colors.color7}
 label-padding    = 1
+
+[module/mpd]
+type = internal/mpd
+
+format-offline            = <label-offline>
+format-offline-foreground = ${colors.color7}
+format-offline-margin     = 1
+label-offline             = ﱙ offline
+
+format-online             = "<icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next> <label-time><label-song>"
+format-online-foreground  = ${colors.color7}
+format-online-margin      = 1
+format-online-spacing     = 1
+
+label-song            = " %artist% - %title%"
+label-song-ellipsis   = true
+label-song-foreground = ${colors.color7}
+label-song-maxlen     = 30
+
+icon-prev      = 
+icon-stop      = 
+icon-play      = 
+icon-pause     = 
+icon-next      = 
+icon-seekb     = 
+icon-seekf     = 
+icon-random    = 
+icon-repeat    = 凌
+icon-repeatone = 綾
+icon-single    = 綾
+icon-consume   = 
 
 [module/padding]
 type = custom/text
