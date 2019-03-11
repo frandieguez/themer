@@ -1,20 +1,23 @@
-rofi.font:                Hack Nerd Font 20
+rofi.font:                FuraMono Nerd Font Mono 12
 rofi.color-enabled:       true
-rofi.color-normal:        #00000000, #6d8086, #00000000, #1d1d22, #d6d6d6
-rofi.color-urgent:        #62889e, #e0eff6, #00000000, #4f99d3, #d6d6d6
-rofi.color-active:        #00000000, #4f99d3, #00000000, #4f99d3, #d6d6d6
-rofi.color-window:        #0d1011, #0d1011, #00000000
+!                         #bg-even #fg      #bg-odd  #bg-focus, #fg-focus
+rofi.color-normal:        #0f1317, #3b536a, #0f1317, #181f23,   #f8fcf6
+rofi.color-urgent:        #0f1317, #cc3e43, #0f1317, #cc3e43,   #0f1317
+rofi.color-active:        #0f1317, #fed02e, #0f1317, #fed02e,   #0f1317
+!                         #bg      #border  #separator
+rofi.color-window:        #0f1317, #3b536a, #0f1317
 rofi.display-run:         
 rofi.display-ssh:         
+rofi.width:               30
 rofi.display-window:      
 rofi.bw:                  2
-rofi.padding:             50
+rofi.padding:             15
 rofi.terminal:            termite
 rofi.ssh-command:         {terminal} -e "{ssh-client} {host}"
-rofi.separator-style:     none
+rofi.separator-style:     solid
 rofi.sidebar-mode:        true
 rofi.line-margin:         10
-rofi.fullscreen:          true
+rofi.fullscreen:          false
 rofi.fake-transparency:   true
 rofi.kb-remove-char-back: BackSpace
 rofi.kb-remove-to-eol:    Control+Delete
@@ -23,3 +26,8 @@ rofi.kb-mode-next:        Shift+Right,Control+l
 rofi.kb-mode-previous:    Shift+Left,Control+h
 rofi.kb-row-up:           Up,Control+k
 rofi.kb-row-down:         Down,Control+j
+rofi.location:            2
+rofi.yoffset:             60
+rofi.fixed-num-lines:     true
+rofi.lines:               5
+rofi.hide-scrollbar:      true
