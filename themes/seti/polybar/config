@@ -61,8 +61,8 @@ tray transparent = true
 font-0 = FuraMono Nerd Font Mono:pixelsize=12;3
 
 modules-left   = memory cpu temperature
-modules-center = lan-d padding lan-u
-modules-right  = wlan time date volume battery
+modules-center =
+modules-right  = wlan lan-d lan-u time date volume battery
 
 [module/battery]
 type = internal/battery
@@ -228,10 +228,6 @@ icon-repeat    = 凌
 icon-repeatone = 綾
 icon-single    = 綾
 icon-consume   = 
-
-[module/padding]
-type = custom/text
-content = "           "
 
 [module/powermenu]
 type         = custom/menu
