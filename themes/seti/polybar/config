@@ -136,7 +136,7 @@ interval = 2
 
 format-background        = ${colors.color0}
 format-foreground        = ${colors.color7}
-format-prefix            = ""
+format-prefix            = 
 format-prefix-padding    = 1
 format-prefix-background = ${colors.color7}
 format-prefix-foreground = ${colors.color0}
