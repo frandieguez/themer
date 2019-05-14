@@ -21,10 +21,10 @@ let s:p.replace.error   = [ [ s:color9, s:color0 ] ]
 let s:p.visual.error    = [ [ s:color3, s:color0 ] ]
 
 let s:p.normal.left     = [ [ s:color0, s:color15 ], [ s:color15, s:color8 ], [ s:color15, s:color0 ] ]
-let s:p.insert.left     = [ [ s:color0, s:color10 ], [ s:color10, s:color0 ] ]
-let s:p.replace.left    = [ [ s:color0, s:color9 ], [ s:color9, s:color0 ] ]
-let s:p.visual.left     = [ [ s:color0, s:color3 ], [ s:color3, s:color0 ] ]
-let s:p.inactive.left   = [ [ s:color7, s:color0 ], [ s:color7, s:color0 ] ]
+let s:p.insert.left     = [ [ s:color0, s:color10 ], [ s:color10, s:color8 ], [ s:color10, s:color0 ] ]
+let s:p.replace.left    = [ [ s:color0, s:color9  ], [ s:color9, s:color8  ], [ s:color9,  s:color0 ] ]
+let s:p.visual.left     = [ [ s:color0, s:color3  ], [ s:color3, s:color8  ], [ s:color3,  s:color0 ] ]
+let s:p.inactive.left   = [ [ s:color7, s:color0  ], [ s:color7, s:color8  ], [ s:color7,  s:color0 ] ]
 
 let s:p.normal.middle   = [ [ s:color15, s:color0 ] ]
 
@@ -45,5 +45,7 @@ let s:p.tabline.middle  = [ [ s:color15, s:color16 ] ]
 let s:p.tabline.right   = [ [ s:color15, s:color8 ] ]
 
 let g:lightline#colorscheme#nightfall#palette = lightline#colorscheme#flatten(s:p)
+
+let g:lightline.active.left = [ [ 'mode', 'paste' ], [ 'fugitive', 'ctrlp' ], [ 'filename', 'ctrlpitem' ] ]
 
 let g:lightline.colorscheme = 'nightfall'

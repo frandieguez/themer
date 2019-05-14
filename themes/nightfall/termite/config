@@ -1,16 +1,17 @@
+# vim:ft=dosini
 [options]
-scroll_on_output = false
+allow_bold          = true
+audible_bell        = false
+clickable_url       = true
+dynamic_title       = true
+font                = MesloLGSDZ Nerd Font 12
+icon_name           = terminal
+mouse_autohide      = true
 scroll_on_keystroke = true
-audible_bell = false
-mouse_autohide = true
-allow_bold = true
-dynamic_title = true
-urgent_on_bell = true
-clickable_url = true
-font = MesloLGSDZ Nerd Font 12
-scrollback_lines = 10000
-search_wrap = true
-icon_name = terminal
+scroll_on_output    = false
+scrollback_lines    = 10000
+search_wrap         = true
+urgent_on_bell      = true
 
 # "system", "on" or "off"
 cursor_blink = on
@@ -24,9 +25,6 @@ size_hints = true
 # Hide links that are no longer valid in url select overlay mode
 filter_unmatched_urls = true
 
-# emit escape sequences for extra modified keys
-#modify_other_keys = true
-
 [hints]
 font = Meslo LG S DZ for Powerline 10
 foreground = #21232a
@@ -38,47 +36,28 @@ border = #81a1c1
 border_width = 2
 roundness = 2.0
 
-# vim: ft=dosini cms=#%s
-
 [colors]
 foreground      = #d4d7d6
 foreground_bold = #eeeeee
 cursor          = #ba77a9
 background      = #191119
 
-# black
 color0  = #1d141d
-color8  = #302029
-
-# red
 color1  = #ab3358
-color9  = #ab3358
-
-# green
 color2  = #a9ba77
-color10 = #a9ba77
-
-# yellow
 color3  = #ccbd8c
-color11 = #ccbd8c
-
-# blue
 color4  = #3377aa
-color12 = #3377aa
-
-# magenta
 color5  = #ba77a9
-color13 = #ba77a9
-
-# cyan
 color6  = #77a9ba
-color14 = #77a9ba
-
-# white
 color7  = #d4d7d6
+color8  = #302029
+color9  = #ab3358
+color10 = #a9ba77
+color11 = #ccbd8c
+color12 = #3377aa
+color13 = #ba77a9
+color14 = #77a9ba
 color15 = #d6d6d6
-
-# Extra colors
 color16 = #191119
 color17 = #d4d7d6
 color18 = #8a553f
